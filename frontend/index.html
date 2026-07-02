@@ -154,45 +154,7 @@
         ></p>
       </div>
 
-      <div class="afterGenderBox">
-        <div class="genone">
-          <img
-            class="img-responsive"
-            src="https://staticimg.titan.co.in/Tanishq/Banners/home/CategorySpotlight/Artboard5.png"
-            style="width: 100%; margin-bottom: 5px"
-          />
-        </div>
-        <div class="fourBox">
-          <div>
-            <img
-              class="img-responsive"
-              src="https://staticimg.titan.co.in/Tanishq/Banners/home/CategorySpotlight/Artboard1.png"
-              style="width: 100%"
-            />
-          </div>
-          <div>
-            <img
-              class="img-responsive"
-              src="https://staticimg.titan.co.in/Tanishq/Banners/home/CategorySpotlight/Artboard2.png"
-              style="width: 100%"
-            />
-          </div>
-          <div>
-            <img
-              class="img-responsive"
-              src="https://staticimg.titan.co.in/Tanishq/Banners/home/CategorySpotlight/Artboard3.png"
-              style="width: 100%"
-            />
-          </div>
-          <div>
-            <img
-              class="img-responsive"
-              src="https://staticimg.titan.co.in/Tanishq/Banners/home/CategorySpotlight/Artboard4.png"
-              style="width: 100%"
-            />
-          </div>
-        </div>
-      </div>
+
       <div>
         <h1 class="text-center h1">Top Sellers</h1>
         <div id="dbTopSellers" class="caraousel-contain"></div>
@@ -355,7 +317,7 @@
       items[i].className = "";
       items[i].style.transform = ""; // clear transform override
       items[i].style.display = "block"; // keep visible for CSS animation
-      
+
       if (slideIdx === item) {
         items[i].classList.add("active");
       } else if (slideIdx === (item === 1 ? items.length : item - 1)) {
@@ -434,22 +396,39 @@
   }
 
   function renderDbBanners(banners) {
-    // 1. Populate top slider
     const centimg = document.getElementById("centimg");
     if (centimg) {
+      // Find the 5 spotlight banners from the API response
       const slides = [
-        (banners || []).find((b) => b.name === "Hero Slide 1"),
-        (banners || []).find((b) => b.name === "Hero Slide 2"),
-        (banners || []).find((b) => b.name === "Hero Slide 3")
+        (banners || []).find((b) => b.name === "Spotlight Main"),
+        (banners || []).find((b) => b.name === "Spotlight 1"),
+        (banners || []).find((b) => b.name === "Spotlight 2"),
+        (banners || []).find((b) => b.name === "Spotlight 3"),
+        (banners || []).find((b) => b.name === "Spotlight 4"),
       ].filter(Boolean);
 
       if (slides.length > 0) {
-        centimg.innerHTML = slides.map(function (slide, idx) {
-          const displayStyle = "block";
-          const activeClass = idx === 0 ? "active" : "";
-          const transformStyle = idx === 0 ? "" : "transform: translateX(100%);";
-          return '<img src="' + escapeHtml(slide.image || '') + '" class="' + activeClass + '" alt="" style="display: ' + displayStyle + '; ' + transformStyle + ' cursor: pointer;" onclick="window.location.href=\'' + escapeHtml(slide.target_url || 'products.html') + '\'">';
-        }).join("");
+        centimg.innerHTML = slides
+          .map(function (slide, idx) {
+            const displayStyle = "block";
+            const activeClass = idx === 0 ? "active" : "";
+            const transformStyle =
+              idx === 0 ? "" : "transform: translateX(100%);";
+            return (
+              '<img src="' +
+              escapeHtml(slide.image || "") +
+              '" class="' +
+              activeClass +
+              '" alt="" style="display: ' +
+              displayStyle +
+              "; " +
+              transformStyle +
+              ' cursor: pointer;" onclick="window.location.href=\'' +
+              escapeHtml(slide.target_url || "products.html") +
+              "'\">"
+            );
+          })
+          .join("");
 
         // Reset slide index and run slider logic
         item = 1;

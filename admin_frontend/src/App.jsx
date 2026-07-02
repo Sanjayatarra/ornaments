@@ -81,7 +81,7 @@ function App() {
   const [silverPrice, setSilverPrice] = useState('')
 
   const [bannersList, setBannersList] = useState([])
-  const [selectedBannerName, setSelectedBannerName] = useState('Hero Slide 1')
+  const [selectedBannerName, setSelectedBannerName] = useState('Spotlight Main')
   const [bannerImgUrl, setBannerImgUrl] = useState('')
   const [bannerTargetUrl, setBannerTargetUrl] = useState('products.html')
   const [bannerImgType, setBannerImgType] = useState('file') // 'file' or 'url'
@@ -141,7 +141,7 @@ function App() {
         const items = data.results || data || []
         setBannersList(items)
 
-        const active = items.find(b => b.name === 'Hero Slide 1')
+        const active = items.find(b => b.name === 'Spotlight Main')
         if (active) {
           setBannerImgUrl(active.image || '')
           setBannerTargetUrl(active.target_url || 'products.html')
@@ -786,6 +786,11 @@ function App() {
                 <option value="Hero Slide 1">Hero Slide 1 (Main Slider)</option>
                 <option value="Hero Slide 2">Hero Slide 2 (Main Slider)</option>
                 <option value="Hero Slide 3">Hero Slide 3 (Main Slider)</option>
+                <option value="Spotlight Main">Spotlight Main (Large)</option>
+                <option value="Spotlight 1">Spotlight 1 (Small Left)</option>
+                <option value="Spotlight 2">Spotlight 2 (Small Mid-Left)</option>
+                <option value="Spotlight 3">Spotlight 3 (Small Mid-Right)</option>
+                <option value="Spotlight 4">Spotlight 4 (Small Right)</option>
               </select>
             </div>
 
