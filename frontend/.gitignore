@@ -1,0 +1,15 @@
+# Ignore node dependencies
+node_modules/
+
+# Ignore local editor settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Ignore system files
+.DS_Store
+Thumbs.db

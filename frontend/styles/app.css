@@ -1,0 +1,140 @@
+:root {
+  --pj-bg: #f9f6f2;
+  --pj-ink: #1f1a17;
+  --pj-gold: #b8872f;
+  --pj-gold-dark: #8d6722;
+  --pj-muted: #6b625a;
+  --pj-border: #e6ddd2;
+}
+
+body {
+  background: var(--pj-bg);
+  color: var(--pj-ink);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.pj-navbar {
+  border-bottom: 1px solid var(--pj-border);
+  background: #fff;
+}
+
+.pj-brand {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--pj-ink);
+}
+
+.pj-brand:hover {
+  color: var(--pj-gold-dark);
+}
+
+.pj-btn-primary {
+  border: 0;
+  background: var(--pj-gold);
+  color: #fff;
+}
+
+.pj-btn-primary:hover {
+  background: var(--pj-gold-dark);
+  color: #fff;
+}
+
+.pj-btn-outline {
+  border-color: var(--pj-gold);
+  color: var(--pj-gold-dark);
+}
+
+.pj-btn-outline:hover {
+  background: var(--pj-gold);
+  border-color: var(--pj-gold);
+  color: #fff;
+}
+
+.hero {
+  background: linear-gradient(120deg, #fff 0%, #f4e8d6 45%, #ead9bc 100%);
+  border: 1px solid var(--pj-border);
+  border-radius: 1rem;
+}
+
+.hero h1 {
+  font-size: clamp(1.8rem, 2.8vw, 3rem);
+}
+
+.hero p {
+  color: var(--pj-muted);
+}
+
+.section-title {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.product-card {
+  height: 100%;
+  border: 1px solid var(--pj-border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(49, 32, 8, 0.1);
+}
+
+.product-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.price {
+  font-weight: 700;
+}
+
+.muted {
+  color: var(--pj-muted);
+}
+
+.pill {
+  border: 1px solid var(--pj-border);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.8rem;
+  color: var(--pj-muted);
+}
+
+.summary-card,
+.auth-card,
+.filter-card {
+  border: 1px solid var(--pj-border);
+  background: #fff;
+  border-radius: 0.75rem;
+}
+
+.empty-state {
+  border: 1px dashed var(--pj-border);
+  border-radius: 0.75rem;
+  background: #fff;
+}
+
+.footer {
+  border-top: 1px solid var(--pj-border);
+  background: #fff;
+}
+
+.nav-link.active {
+  color: var(--pj-gold-dark) !important;
+  font-weight: 600;
+}
+
+.auth-badge {
+  font-size: 0.82rem;
+  color: var(--pj-muted);
+}
+
+.table > :not(caption) > * > * {
+  border-bottom-color: var(--pj-border);
+}
+
+.status-message {
+  min-height: 1.5rem;
+}

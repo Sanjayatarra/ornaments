@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="img\tanishq_logo_browser_top.png">
+    <link rel="stylesheet" href="styles\cart.css">
+    <link rel="stylesheet" href="styles\footer.css">
+    <link rel="stylesheet" href="styles\navbar.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <script src="https://kit.fontawesome.com/78d13b8fa3.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <p style="font-size: 12px; margin-top: 150px; padding-left: 7%; color: gray;">HOME > CART</p>
+
+    <div id="container1">
+        <h1 class="word">CART : 1 ITEM</h1>
+            <br>
+        <div id="cart">
+            
+
+            <div>
+                
+                <div id="cartItemTitle">
+                    <p>ITEM(S)</p>
+                    <p>QUANTITY</p>
+                    <p>TOTAL</p>
+                </div>
+
+                <div id="productContainer">
+
+                    <div id="showProduct">
+                    
+                    </div>
+
+                </div>
+
+                
+
+            </div>
+
+
+            <div id="summary">
+                <h1>ORDER SUMMARY</h1>
+                <P>Enter Voucher Code</P>
+                <input type="text" id="inputVoucher">
+                <button id="btnVoucher">APPLY</button>
+
+                <p>Order Total</p> 
+                <h2 id="sumTotal"></h2>
+
+                <p>Shipping</p> 
+                <h2>FREE</h2>
+
+                <p>discount</p> 
+                <h2 id="sumDiscount"></h2>
+
+                <h3>You Pay</h3> 
+                <h2 id="SumPay"></h2>
+
+                <h3>Inclusive of all taxes*</h3>
+
+                <h3 id="red">You Save</h3>
+                 <h2 id="saving"></h2>
+
+                <button id="btnCheckout" onclick="checkout()">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 50px;" id="footer"></div>
+    
+</body>
+</html>
+
+<script src="scripts\backendApi.js"></script>
+<script type="module">
+    import {navbar} from './components/navbar.js';
+    let N = document.getElementById("navbar");
+    N.innerHTML = navbar();
+    window.BackendApi.hydrateNavbar();
+
+    import {footer} from './components/footer.js';
+    let F = document.getElementById("footer");
+    F.innerHTML = footer();
+</script>
+
+<script>
+    let database = [];
+
+    function formatInr(value) {
+        return "Rs. " + Number(value || 0);
+    }
+
+    function renderSummary() {
+        let sum = 0;
+        let tSum = 0;
+        database.forEach(function(elem){
+            sum += Number(elem.Price || 0) * Number(elem.quantity || 1);
+            tSum += Number(elem.DiscountPrice || 0) * Number(elem.quantity || 1);
+        });
+        let saving = sum - tSum;
+        document.getElementById("sumTotal").innerText = formatInr(sum);
+        document.getElementById("SumPay").innerText = formatInr(tSum);
+        document.getElementById("saving").innerText = formatInr(saving);
+        document.getElementById("sumDiscount").innerText = formatInr(saving);
+    }
+
+    async function syncQtyToBackend(elem, qty, totalEl) {
+        try {
+            await window.BackendApi.updateCartItem(elem.item_id, qty);
+            elem.quantity = qty;
+            totalEl.innerText = formatInr(qty * Number(elem.DiscountPrice || 0));
+            renderSummary();
+            await window.BackendApi.syncLegacyCartFromBackend();
+            window.BackendApi.hydrateNavbar();
+        } catch (err) {
+            alert(err && err.message ? err.message : "Unable to update cart");
+        }
+    }
+
+    function renderCart() {
+        document.getElementById("showProduct").innerHTML = "";
+        let word = document.querySelector(".word");
+        word.innerText = `CART : ${database.length} ITEMS`;
+
+        database.forEach(function(elem){
+            let div = document.createElement("div");
+
+            let image = document.createElement("img");
+            image.src = Array.isArray(elem.Img) ? elem.Img[0] : elem.Img;
+
+            let title = document.createElement("h3");
+            title.setAttribute("id","title");
+            title.innerText = elem.Title;
+            
+            let price = document.createElement("h3");
+            price.innerText = `${elem.DiscountPrice}`;
+            price.setAttribute("id","price");
+
+            let discountPrice = document.createElement("h3");
+            discountPrice.setAttribute("id","discount");
+            discountPrice.innerText = formatInr(elem.Price);
+
+            let weight = document.createElement("p");
+            weight.innerText = elem.Weight || "";
+
+            let size = document.createElement("p");
+            size.innerText = "17.20";
+
+            let div2 = document.createElement("div");
+            div2.append(title,price,discountPrice,weight,size);
+
+            let qty = document.createElement("input");
+            qty.setAttribute("id","qty");
+            qty.value = Number(elem.quantity || 1);
+            qty.type = "number";
+            qty.min = "1";
+
+            let total = document.createElement("h3");
+            total.setAttribute("id","total");
+            total.innerText = formatInr(Number(elem.DiscountPrice || 0) * Number(elem.quantity || 1));
+
+            qty.addEventListener("change", function(){
+                const nextQty = Math.max(1, Number(qty.value || 1));
+                qty.value = nextQty;
+                if (elem.item_id) {
+                    syncQtyToBackend(elem, nextQty, total);
+                } else {
+                    elem.quantity = nextQty;
+                    total.innerText = formatInr(nextQty * Number(elem.DiscountPrice || 0));
+                    renderSummary();
+                }
+            });
+
+            div.append(image,div2,qty,total);
+            document.getElementById("showProduct").append(div);
+        });
+
+        renderSummary();
+    }
+
+    async function loadCart() {
+        const token = window.BackendApi.getToken();
+        if (!token) {
+            database = JSON.parse(localStorage.getItem("cart")) || [];
+            renderCart();
+            return;
+        }
+
+        database = await window.BackendApi.syncLegacyCartFromBackend();
+        renderCart();
+        window.BackendApi.hydrateNavbar();
+    }
+
+    function checkout(){
+        window.location.href = "checkout.html";
+    }
+
+    loadCart();
+</script>

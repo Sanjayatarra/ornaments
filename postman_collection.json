@@ -1,0 +1,4105 @@
+{
+  "info": {
+    "name": "Priyanka Jewellers ERP API Collection",
+    "description": "Auto-generated Postman collection to test optimized Django REST Framework CRUD APIs for 29 normalized tables.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User (users)",
+      "item": [
+        {
+          "name": "List Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/users/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/users/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"email\": \"test_users@example.com\",\n  \"password\": \"SecurePassword123\",\n  \"role\": \"sample_role\",\n  \"created_at\": \"2026-07-01T12:00:00Z\",\n  \"updated_at\": \"2026-07-01T12:00:00Z\",\n  \"last_login\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/users/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/users/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"email\": \"test_users@example.com\",\n  \"password\": \"SecurePassword123\",\n  \"role\": \"sample_role\",\n  \"created_at\": \"2026-07-01T12:00:00Z\",\n  \"updated_at\": \"2026-07-01T12:00:00Z\",\n  \"last_login\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/users/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Category (categories)",
+      "item": [
+        {
+          "name": "List Categorys",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/categories/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/categories/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "categories"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"slug\": \"sample_slug\",\n  \"description\": \"sample_description\",\n  \"parent\": \"00000000-0000-0000-0000-000000000000\",\n  \"image\": \"sample_image\",\n  \"sort_order\": 1,\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Category by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/categories/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "categories",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/categories/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "categories",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"slug\": \"sample_slug\",\n  \"description\": \"sample_description\",\n  \"parent\": \"00000000-0000-0000-0000-000000000000\",\n  \"image\": \"sample_image\",\n  \"sort_order\": 1,\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Category",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/categories/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "categories",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Metal (metals)",
+      "item": [
+        {
+          "name": "List Metals",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/metals/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "metals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Metal",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/metals/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "metals"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Metal by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/metals/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "metals",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Metal",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/metals/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "metals",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Metal",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/metals/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "metals",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Purity (purities)",
+      "item": [
+        {
+          "name": "List Puritys",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/purities/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "purities"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Purity",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/purities/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "purities"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"purity_percent\": 10.5,\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Purity by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/purities/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "purities",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Purity",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/purities/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "purities",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"purity_percent\": 10.5,\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Purity",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/purities/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "purities",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Gender (genders)",
+      "item": [
+        {
+          "name": "List Genders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/genders/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "genders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Gender",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/genders/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "genders"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Gender by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/genders/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "genders",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Gender",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/genders/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "genders",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Gender",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/genders/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "genders",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Occasion (occasions)",
+      "item": [
+        {
+          "name": "List Occasions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/occasions/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "occasions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Occasion",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/occasions/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "occasions"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Occasion by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/occasions/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "occasions",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Occasion",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/occasions/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "occasions",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Occasion",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/occasions/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "occasions",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "StoneType (stone_types)",
+      "item": [
+        {
+          "name": "List StoneTypes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/stone_types/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "stone_types"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create StoneType",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/stone_types/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "stone_types"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get StoneType by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/stone_types/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "stone_types",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update StoneType",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/stone_types/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "stone_types",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete StoneType",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/stone_types/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "stone_types",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Brand (brands)",
+      "item": [
+        {
+          "name": "List Brands",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/brands/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "brands"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Brand",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/brands/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "brands"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Brand by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/brands/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "brands",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Brand",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/brands/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "brands",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Brand",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/brands/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "brands",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Collection (collections)",
+      "item": [
+        {
+          "name": "List Collections",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/collections/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "collections"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Collection",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/collections/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "collections"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"description\": \"sample_description\",\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Collection by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/collections/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "collections",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Collection",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/collections/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "collections",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"description\": \"sample_description\",\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Collection",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/collections/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "collections",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Certification (certifications)",
+      "item": [
+        {
+          "name": "List Certifications",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/certifications/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "certifications"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Certification",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/certifications/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "certifications"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"issuing_authority\": \"sample_issuing_authority\",\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Certification by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/certifications/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "certifications",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Certification",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/certifications/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "certifications",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"issuing_authority\": \"sample_issuing_authority\",\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Certification",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/certifications/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "certifications",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Tag (tags)",
+      "item": [
+        {
+          "name": "List Tags",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/tags/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "tags"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Tag",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/tags/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "tags"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Tag by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/tags/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "tags",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Tag",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/tags/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "tags",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Tag",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/tags/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "tags",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Product (products)",
+      "item": [
+        {
+          "name": "List Products",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/products/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/products/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "products"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"slug\": \"sample_slug\",\n  \"description\": \"sample_description\",\n  \"short_description\": \"sample_short_description\",\n  \"category\": \"00000000-0000-0000-0000-000000000000\",\n  \"gender\": \"00000000-0000-0000-0000-000000000000\",\n  \"brand\": \"00000000-0000-0000-0000-000000000000\",\n  \"collection\": \"00000000-0000-0000-0000-000000000000\",\n  \"certification\": \"00000000-0000-0000-0000-000000000000\",\n  \"featured\": true,\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\",\n  \"updated_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Product by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/products/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "products",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/products/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "products",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"sample_name\",\n  \"slug\": \"sample_slug\",\n  \"description\": \"sample_description\",\n  \"short_description\": \"sample_short_description\",\n  \"category\": \"00000000-0000-0000-0000-000000000000\",\n  \"gender\": \"00000000-0000-0000-0000-000000000000\",\n  \"brand\": \"00000000-0000-0000-0000-000000000000\",\n  \"collection\": \"00000000-0000-0000-0000-000000000000\",\n  \"certification\": \"00000000-0000-0000-0000-000000000000\",\n  \"featured\": true,\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\",\n  \"updated_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/products/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "products",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ProductVariant (product_variants)",
+      "item": [
+        {
+          "name": "List ProductVariants",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_variants/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_variants"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create ProductVariant",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_variants/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_variants"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"00000000-0000-0000-0000-000000000000\",\n  \"sku\": \"sample_sku\",\n  \"metal\": \"00000000-0000-0000-0000-000000000000\",\n  \"purity\": \"00000000-0000-0000-0000-000000000000\",\n  \"weight\": 10.5,\n  \"barcode\": \"sample_barcode\",\n  \"status\": \"sample_status\",\n  \"metal_value\": 10.5,\n  \"stone_value\": 10.5,\n  \"making_charge\": 10.5,\n  \"gst\": 10.5,\n  \"discount\": 10.5,\n  \"selling_price\": 10.5,\n  \"created_at\": \"2026-07-01T12:00:00Z\",\n  \"updated_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get ProductVariant by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_variants/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_variants",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update ProductVariant",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_variants/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_variants",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"00000000-0000-0000-0000-000000000000\",\n  \"sku\": \"sample_sku\",\n  \"metal\": \"00000000-0000-0000-0000-000000000000\",\n  \"purity\": \"00000000-0000-0000-0000-000000000000\",\n  \"weight\": 10.5,\n  \"barcode\": \"sample_barcode\",\n  \"status\": \"sample_status\",\n  \"metal_value\": 10.5,\n  \"stone_value\": 10.5,\n  \"making_charge\": 10.5,\n  \"gst\": 10.5,\n  \"discount\": 10.5,\n  \"selling_price\": 10.5,\n  \"created_at\": \"2026-07-01T12:00:00Z\",\n  \"updated_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete ProductVariant",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_variants/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_variants",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Inventory (inventory)",
+      "item": [
+        {
+          "name": "List Inventorys",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/inventory/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "inventory"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Inventory",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/inventory/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "inventory"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"variant\": \"00000000-0000-0000-0000-000000000000\",\n  \"quantity\": 1,\n  \"reserved_quantity\": 1,\n  \"available_quantity\": 1,\n  \"low_stock_threshold\": 1,\n  \"updated_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Inventory by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/inventory/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "inventory",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Inventory",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/inventory/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "inventory",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"variant\": \"00000000-0000-0000-0000-000000000000\",\n  \"quantity\": 1,\n  \"reserved_quantity\": 1,\n  \"available_quantity\": 1,\n  \"low_stock_threshold\": 1,\n  \"updated_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Inventory",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/inventory/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "inventory",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ProductMetal (product_metals)",
+      "item": [
+        {
+          "name": "List ProductMetals",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_metals/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_metals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create ProductMetal",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_metals/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_metals"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"00000000-0000-0000-0000-000000000000\",\n  \"metal\": \"00000000-0000-0000-0000-000000000000\",\n  \"purity\": \"00000000-0000-0000-0000-000000000000\",\n  \"weight_grams\": 10.5,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get ProductMetal by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_metals/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_metals",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update ProductMetal",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_metals/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_metals",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"00000000-0000-0000-0000-000000000000\",\n  \"metal\": \"00000000-0000-0000-0000-000000000000\",\n  \"purity\": \"00000000-0000-0000-0000-000000000000\",\n  \"weight_grams\": 10.5,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete ProductMetal",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_metals/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_metals",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ProductOccasion (product_occasions)",
+      "item": [
+        {
+          "name": "List ProductOccasions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_occasions/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_occasions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create ProductOccasion",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_occasions/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_occasions"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"00000000-0000-0000-0000-000000000000\",\n  \"occasion\": \"00000000-0000-0000-0000-000000000000\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get ProductOccasion by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_occasions/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_occasions",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update ProductOccasion",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_occasions/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_occasions",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"00000000-0000-0000-0000-000000000000\",\n  \"occasion\": \"00000000-0000-0000-0000-000000000000\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete ProductOccasion",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_occasions/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_occasions",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ProductStone (product_stones)",
+      "item": [
+        {
+          "name": "List ProductStones",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_stones/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_stones"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create ProductStone",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_stones/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_stones"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"00000000-0000-0000-0000-000000000000\",\n  \"stone_type\": \"00000000-0000-0000-0000-000000000000\",\n  \"weight\": 10.5,\n  \"pieces\": 1,\n  \"cut\": \"sample_cut\",\n  \"clarity\": \"sample_clarity\",\n  \"color\": \"sample_color\",\n  \"certificate\": \"sample_certificate\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get ProductStone by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_stones/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_stones",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update ProductStone",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_stones/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_stones",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"00000000-0000-0000-0000-000000000000\",\n  \"stone_type\": \"00000000-0000-0000-0000-000000000000\",\n  \"weight\": 10.5,\n  \"pieces\": 1,\n  \"cut\": \"sample_cut\",\n  \"clarity\": \"sample_clarity\",\n  \"color\": \"sample_color\",\n  \"certificate\": \"sample_certificate\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete ProductStone",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_stones/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_stones",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ProductImage (product_images)",
+      "item": [
+        {
+          "name": "List ProductImages",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_images/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_images"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create ProductImage",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_images/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_images"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"00000000-0000-0000-0000-000000000000\",\n  \"image_url\": \"sample_image_url\",\n  \"is_thumbnail\": true,\n  \"sort_order\": 1,\n  \"alt_text\": \"sample_alt_text\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get ProductImage by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_images/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_images",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update ProductImage",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_images/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_images",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"00000000-0000-0000-0000-000000000000\",\n  \"image_url\": \"sample_image_url\",\n  \"is_thumbnail\": true,\n  \"sort_order\": 1,\n  \"alt_text\": \"sample_alt_text\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete ProductImage",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_images/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_images",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ProductTag (product_tags)",
+      "item": [
+        {
+          "name": "List ProductTags",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_tags/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_tags"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create ProductTag",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_tags/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_tags"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"00000000-0000-0000-0000-000000000000\",\n  \"tag\": \"00000000-0000-0000-0000-000000000000\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get ProductTag by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_tags/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_tags",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update ProductTag",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_tags/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_tags",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"00000000-0000-0000-0000-000000000000\",\n  \"tag\": \"00000000-0000-0000-0000-000000000000\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete ProductTag",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/product_tags/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "product_tags",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "CartItem (cart_items)",
+      "item": [
+        {
+          "name": "List CartItems",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/cart_items/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "cart_items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create CartItem",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/cart_items/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "cart_items"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"00000000-0000-0000-0000-000000000000\",\n  \"variant\": \"00000000-0000-0000-0000-000000000000\",\n  \"quantity\": 1,\n  \"size\": \"sample_size\",\n  \"engraving\": \"sample_engraving\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get CartItem by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/cart_items/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "cart_items",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update CartItem",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/cart_items/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "cart_items",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"00000000-0000-0000-0000-000000000000\",\n  \"variant\": \"00000000-0000-0000-0000-000000000000\",\n  \"quantity\": 1,\n  \"size\": \"sample_size\",\n  \"engraving\": \"sample_engraving\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete CartItem",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/cart_items/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "cart_items",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "WishlistItem (wishlist_items)",
+      "item": [
+        {
+          "name": "List WishlistItems",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/wishlist_items/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "wishlist_items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create WishlistItem",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/wishlist_items/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "wishlist_items"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"00000000-0000-0000-0000-000000000000\",\n  \"variant\": \"00000000-0000-0000-0000-000000000000\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get WishlistItem by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/wishlist_items/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "wishlist_items",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update WishlistItem",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/wishlist_items/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "wishlist_items",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"00000000-0000-0000-0000-000000000000\",\n  \"variant\": \"00000000-0000-0000-0000-000000000000\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete WishlistItem",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/wishlist_items/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "wishlist_items",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Offer (offers)",
+      "item": [
+        {
+          "name": "List Offers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/offers/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "offers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Offer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/offers/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "offers"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"sample_code\",\n  \"discount_type\": \"sample_discount_type\",\n  \"discount_value\": 10.5,\n  \"description\": \"sample_description\",\n  \"start_date\": \"2026-07-01T12:00:00Z\",\n  \"end_date\": \"2026-07-01T12:00:00Z\",\n  \"active\": true\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Offer by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/offers/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "offers",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Offer",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/offers/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "offers",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"sample_code\",\n  \"discount_type\": \"sample_discount_type\",\n  \"discount_value\": 10.5,\n  \"description\": \"sample_description\",\n  \"start_date\": \"2026-07-01T12:00:00Z\",\n  \"end_date\": \"2026-07-01T12:00:00Z\",\n  \"active\": true\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Offer",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/offers/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "offers",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Order (orders)",
+      "item": [
+        {
+          "name": "List Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/orders/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/orders/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "orders"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"00000000-0000-0000-0000-000000000000\",\n  \"coupon\": \"00000000-0000-0000-0000-000000000000\",\n  \"gst\": 10.5,\n  \"shipping_charge\": 10.5,\n  \"invoice_number\": \"sample_invoice_number\",\n  \"payment_method\": \"sample_payment_method\",\n  \"payment_status\": \"sample_payment_status\",\n  \"total_amount\": 10.5,\n  \"shipping_address\": {\n    \"street\": \"123 Main St\",\n    \"city\": \"Mumbai\",\n    \"state\": \"Maharashtra\",\n    \"zip\": \"400001\",\n    \"country\": \"India\"\n  },\n  \"delivery_status\": \"sample_delivery_status\",\n  \"tracking_number\": \"sample_tracking_number\",\n  \"tracking_carrier\": \"sample_tracking_carrier\",\n  \"created_at\": \"2026-07-01T12:00:00Z\",\n  \"updated_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Order by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/orders/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "orders",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/orders/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "orders",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"00000000-0000-0000-0000-000000000000\",\n  \"coupon\": \"00000000-0000-0000-0000-000000000000\",\n  \"gst\": 10.5,\n  \"shipping_charge\": 10.5,\n  \"invoice_number\": \"sample_invoice_number\",\n  \"payment_method\": \"sample_payment_method\",\n  \"payment_status\": \"sample_payment_status\",\n  \"total_amount\": 10.5,\n  \"shipping_address\": {\n    \"street\": \"123 Main St\",\n    \"city\": \"Mumbai\",\n    \"state\": \"Maharashtra\",\n    \"zip\": \"400001\",\n    \"country\": \"India\"\n  },\n  \"delivery_status\": \"sample_delivery_status\",\n  \"tracking_number\": \"sample_tracking_number\",\n  \"tracking_carrier\": \"sample_tracking_carrier\",\n  \"created_at\": \"2026-07-01T12:00:00Z\",\n  \"updated_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Order",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/orders/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "orders",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "OrderItem (order_items)",
+      "item": [
+        {
+          "name": "List OrderItems",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/order_items/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "order_items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create OrderItem",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/order_items/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "order_items"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order\": \"00000000-0000-0000-0000-000000000000\",\n  \"variant\": \"00000000-0000-0000-0000-000000000000\",\n  \"quantity\": 1,\n  \"price\": 10.5,\n  \"size\": \"sample_size\",\n  \"engraving\": \"sample_engraving\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get OrderItem by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/order_items/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "order_items",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update OrderItem",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/order_items/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "order_items",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order\": \"00000000-0000-0000-0000-000000000000\",\n  \"variant\": \"00000000-0000-0000-0000-000000000000\",\n  \"quantity\": 1,\n  \"price\": 10.5,\n  \"size\": \"sample_size\",\n  \"engraving\": \"sample_engraving\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete OrderItem",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/order_items/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "order_items",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Appointment (appointments)",
+      "item": [
+        {
+          "name": "List Appointments",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/appointments/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "appointments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Appointment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/appointments/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "appointments"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"00000000-0000-0000-0000-000000000000\",\n  \"full_name\": \"sample_full_name\",\n  \"email\": \"test_appointments@example.com\",\n  \"phone\": \"sample_phone\",\n  \"date\": \"sample_date\",\n  \"time_slot\": \"sample_time_slot\",\n  \"status\": \"sample_status\",\n  \"store_location\": \"sample_store_location\",\n  \"notes\": \"sample_notes\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Appointment by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/appointments/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "appointments",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Appointment",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/appointments/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "appointments",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"00000000-0000-0000-0000-000000000000\",\n  \"full_name\": \"sample_full_name\",\n  \"email\": \"test_appointments@example.com\",\n  \"phone\": \"sample_phone\",\n  \"date\": \"sample_date\",\n  \"time_slot\": \"sample_time_slot\",\n  \"status\": \"sample_status\",\n  \"store_location\": \"sample_store_location\",\n  \"notes\": \"sample_notes\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Appointment",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/appointments/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "appointments",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "CustomJewelryRequest (custom_requests)",
+      "item": [
+        {
+          "name": "List CustomJewelryRequests",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/custom_requests/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "custom_requests"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create CustomJewelryRequest",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/custom_requests/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "custom_requests"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"00000000-0000-0000-0000-000000000000\",\n  \"description\": \"sample_description\",\n  \"budget\": 10.5,\n  \"material\": \"sample_material\",\n  \"gemstone\": \"sample_gemstone\",\n  \"reference_images\": {},\n  \"status\": \"sample_status\",\n  \"notes\": \"sample_notes\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get CustomJewelryRequest by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/custom_requests/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "custom_requests",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update CustomJewelryRequest",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/custom_requests/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "custom_requests",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"00000000-0000-0000-0000-000000000000\",\n  \"description\": \"sample_description\",\n  \"budget\": 10.5,\n  \"material\": \"sample_material\",\n  \"gemstone\": \"sample_gemstone\",\n  \"reference_images\": {},\n  \"status\": \"sample_status\",\n  \"notes\": \"sample_notes\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete CustomJewelryRequest",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/custom_requests/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "custom_requests",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Review (reviews)",
+      "item": [
+        {
+          "name": "List Reviews",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/reviews/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "reviews"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Review",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/reviews/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "reviews"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"00000000-0000-0000-0000-000000000000\",\n  \"product\": \"00000000-0000-0000-0000-000000000000\",\n  \"rating\": 1,\n  \"title\": \"sample_title\",\n  \"comment\": \"sample_comment\",\n  \"verified_purchase\": true,\n  \"review_images\": [\n    \"http://example.com/review1.jpg\"\n  ],\n  \"admin_reply\": \"sample_admin_reply\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Review by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/reviews/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "reviews",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Review",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/reviews/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "reviews",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"00000000-0000-0000-0000-000000000000\",\n  \"product\": \"00000000-0000-0000-0000-000000000000\",\n  \"rating\": 1,\n  \"title\": \"sample_title\",\n  \"comment\": \"sample_comment\",\n  \"verified_purchase\": true,\n  \"review_images\": [\n    \"http://example.com/review1.jpg\"\n  ],\n  \"admin_reply\": \"sample_admin_reply\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Review",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/reviews/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "reviews",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Blog (blogs)",
+      "item": [
+        {
+          "name": "List Blogs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/blogs/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "blogs"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Blog",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/blogs/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "blogs"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"sample_title\",\n  \"slug\": \"sample_slug\",\n  \"content\": \"sample_content\",\n  \"summary\": \"sample_summary\",\n  \"cover_image\": \"sample_cover_image\",\n  \"author\": \"sample_author\",\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Blog by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/blogs/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "blogs",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Blog",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/blogs/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "blogs",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"sample_title\",\n  \"slug\": \"sample_slug\",\n  \"content\": \"sample_content\",\n  \"summary\": \"sample_summary\",\n  \"cover_image\": \"sample_cover_image\",\n  \"author\": \"sample_author\",\n  \"active\": true,\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Blog",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/blogs/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "blogs",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "GiftCard (gift_cards)",
+      "item": [
+        {
+          "name": "List GiftCards",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/gift_cards/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "gift_cards"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create GiftCard",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/gift_cards/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "gift_cards"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"sample_code\",\n  \"initial_value\": 10.5,\n  \"balance\": 10.5,\n  \"expiry_date\": \"2026-07-01T12:00:00Z\",\n  \"active\": true,\n  \"user\": \"00000000-0000-0000-0000-000000000000\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get GiftCard by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/gift_cards/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "gift_cards",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update GiftCard",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/gift_cards/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "gift_cards",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"sample_code\",\n  \"initial_value\": 10.5,\n  \"balance\": 10.5,\n  \"expiry_date\": \"2026-07-01T12:00:00Z\",\n  \"active\": true,\n  \"user\": \"00000000-0000-0000-0000-000000000000\",\n  \"created_at\": \"2026-07-01T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete GiftCard",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{base_url}}/api/gift_cards/00000000-0000-0000-0000-000000000000/",
+              "protocol": "http",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "gift_cards",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "localhost:8000",
+      "type": "string"
+    }
+  ]
+}

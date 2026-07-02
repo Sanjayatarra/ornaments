@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img\tanishq_logo_browser_top.png">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="styles\checkout.css">
+</head>
+<body>
+    <div id="checkoutNavbar">
+        <img src="https://www.tanishq.co.in/wps/wcm/connect/tanishq/cb53f671-01d0-449e-b18d-a4e61e6ffa0b/TanishqLogo.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0RT10QIMVSTFU3006-cb53f671-01d0-449e-b18d-a4e61e6ffa0b-mC036IT" alt="">
+        <div>
+            <p class="bold">Do You Have A Question?</p>
+            <p>CALL US ON 1800-266-0123</p>
+        </div>
+    </div>
+
+    <div class="step">PLACE YOUR ORDER IN EASY STEPS</div>
+
+    <div id="details">
+        <h3>DELIVERY INFORMATION</h3>
+        <p class="shortP">In order to deliver your order, we need to gather some information from you. Please fill the form below.</p>
+        <h2>YOUR PERSONAL DETAILS</h2>
+
+        <p>TITLE </p>
+        <select id="select">
+            <option value="Select Title">Select Title</option>
+            <option value="male">Mr.</option>
+            <option value="female">Ms.</option>
+        </select>
+        
+        <!-- <br> -->
+        <p>FIRST NAME * </p>
+        <input type="text" placeholder="FIRST NAME">
+        
+
+        <p>LAST NAME * </p>
+        <input type="text" placeholder="LAST NAME">
+        
+
+        <p>EMAIL ADDRESS *</p>
+        <input type="text" placeholder="EMAIL ADDRESS">
+        
+
+        <p>Mobile NUMBER *</p>
+        <input type="number" placeholder="PHONE NUMBER">
+        
+
+        <h2>DELIVERY DETAILS</h2>
+
+        <select name="" id="country">
+            <option value="India">India</option>
+        </select>
+
+        <p>PIN-CODE/ZIP-CODE *</p>
+        <input type="number" placeholder="6 Digit Pincode">
+        
+
+        <p>STATE *</p>
+        <input type="text" placeholder="STATE">
+        
+
+        <p>CITY *</p>
+        <input type="text" placeholder="CITY">
+        
+
+        <p>STREET ADDRESS / BUILDING / LOCALITY *</p>
+        <input type="text" placeholder="Flat no, House no, Street Name">
+        <br>
+
+        <button id="btnPayment" onclick="show()" >Proceed to payment</button>
+        
+    </div>
+
+    <div id="payment">
+
+        <div id="info">
+            <h2>PAYMENT INFORMATION</h2>
+            <p class="shortP">In order to process your order, we need to gather your payment details.
+                Please select a mode of payment below. You will be securely
+                redirected to our partner site to process this order.
+            </p>
+
+            <p>Complete your order using another payment method</p>
+
+            <div id="creditcard">
+                <h5> CARD / NET BANKING / WALLET / PhonePe</h5>
+                <p>Use your Cards,Wallets, PhonePe or Netbanking</p>
+                <div id="creditImg">
+                    <img src="https://www.tanishq.co.in/wps/wcm/connect/tanishq/c2e24c1f-930d-453b-a829-58027175d6e8/Visa_Razorpay.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0RT10QIMVSTFU3006-c2e24c1f-930d-453b-a829-58027175d6e8-nNmx7rM" alt="">
+                    <img src="https://www.tanishq.co.in/wps/wcm/connect/tanishq/a49ec125-3082-47bc-aa70-3cd826536ddb/MasterCard_Razorpay.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0RT10QIMVSTFU3006-a49ec125-3082-47bc-aa70-3cd826536ddb-nNmwrR3" alt="">
+                    <img src="https://www.tanishq.co.in/wps/wcm/connect/tanishq/de0bafe7-d87e-46d8-8773-44a05603d1e8/Maestro_Razorpay.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0RT10QIMVSTFU3006-de0bafe7-d87e-46d8-8773-44a05603d1e8-nNmwlPn" alt="">
+                    <img src="https://www.tanishq.co.in/wps/wcm/connect/tanishq/b1df0c3e-c9e3-4473-b595-3037b938d69f/Rupay_Razorpay.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0RT10QIMVSTFU3006-b1df0c3e-c9e3-4473-b595-3037b938d69f-nNmwXNE" alt="">
+                    <img src="https://www.tanishq.co.in/wps/wcm/connect/tanishq/4239bc8b-45d3-445a-a5eb-d1f125e5f5ea/Amex_Razorpay.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0RT10QIMVSTFU3006-4239bc8b-45d3-445a-a5eb-d1f125e5f5ea-nNmvWkk" alt="">
+                    <img src="https://www.tanishq.co.in/wps/wcm/connect/tanishq/4393ecb6-0d51-4c8b-b4ea-f8b276a12ea1/Diners_Razorpay.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0RT10QIMVSTFU3006-4393ecb6-0d51-4c8b-b4ea-f8b276a12ea1-nNmw5Lo" alt="">
+                    <img src="https://www.tanishq.co.in/wps/wcm/connect/tanishq/95860dc1-e524-41b6-b912-91569181d58a/International_Razorpay.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0RT10QIMVSTFU3006-95860dc1-e524-41b6-b912-91569181d58a-nOygmGy" alt="">
+                </div>
+
+                <button id="btnPay" onclick="payment()">PAY FOR YOUR ORDER</button>
+
+                <p>By placing the order, you have read and agreed the  Terms and Conditions and Privacy Policy of Tanishq.co.in</p>
+            </div>
+
+
+        </div>
+
+
+        <div id="total">
+            <div>
+                <h2>TOTAL BREAKDOWN</h2>
+                <div class="flex">
+                    <p>ORDER SUBTOTAL</p>
+                    <p>80638</p>
+                </div>
+                <div class="flex">
+                    <p>DISCOUNT</p>
+                    <p>0</p>
+                </div>
+                <div class="flex">
+                    <p>SHIPPING</p>
+                    <p>FREE</p>
+                </div>
+                <div class="flex">
+                    <h2>YOU PAY</h2>
+                    <h2>80638</h2>
+                </div>
+                <h4>INCLUSIVE OF ALL TAXES*</h4>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="scripts\backendApi.js"></script>
+<script>
+    const ORDER_KEY = "pending_order_payload";
+    const SNAPSHOT_KEY = "pending_order_snapshot";
+    let cartItems = [];
+
+    function formatInr(value) {
+        return "Rs. " + Number(value || 0);
+    }
+
+    function setBreakdown(subtotal, discount) {
+        const total = Math.max(0, subtotal - discount);
+        const rows = document.querySelectorAll("#total .flex");
+        if (rows.length >= 4) {
+            rows[0].querySelectorAll("p")[1].innerText = formatInr(subtotal);
+            rows[1].querySelectorAll("p")[1].innerText = formatInr(discount);
+            rows[3].querySelectorAll("h2")[1].innerText = formatInr(total);
+        }
+    }
+
+    function readAddress() {
+        const inputs = document.querySelectorAll("#details input");
+        return {
+            title: document.getElementById("select").value,
+            first_name: (inputs[0] && inputs[0].value || "").trim(),
+            last_name: (inputs[1] && inputs[1].value || "").trim(),
+            email: (inputs[2] && inputs[2].value || "").trim(),
+            phone: (inputs[3] && inputs[3].value || "").trim(),
+            pincode: (inputs[4] && inputs[4].value || "").trim(),
+            state: (inputs[5] && inputs[5].value || "").trim(),
+            city: (inputs[6] && inputs[6].value || "").trim(),
+            line1: (inputs[7] && inputs[7].value || "").trim()
+        };
+    }
+
+    async function payment(){
+        const token = window.BackendApi.getToken();
+        if (!token) {
+            alert("Please login first");
+            window.location.href = "login.html";
+            return;
+        }
+
+        const address = readAddress();
+        if (!address.first_name || !address.last_name || !address.phone || !address.city || !address.state || !address.pincode || !address.line1) {
+            alert("Please fill all required delivery details");
+            return;
+        }
+
+        const shipping_address = {
+            full_name: (address.first_name + " " + address.last_name).trim(),
+            email: address.email,
+            phone: address.phone,
+            pincode: address.pincode,
+            state: address.state,
+            city: address.city,
+            line1: address.line1
+        };
+
+        const payload = {
+            payment_method: "Razorpay",
+            shipping_address: shipping_address
+        };
+
+        localStorage.setItem(ORDER_KEY, JSON.stringify(payload));
+        localStorage.setItem(SNAPSHOT_KEY, JSON.stringify(cartItems));
+        window.location.href = "payment.html";
+    }
+
+    function show(){
+        const token = window.BackendApi.getToken();
+        if (!token) {
+            alert("Please login first");
+            window.location.href = "login.html";
+            return;
+        }
+        const address = readAddress();
+        if (!address.first_name || !address.last_name || !address.phone || !address.city || !address.state || !address.pincode || !address.line1) {
+            alert("Please fill all required delivery details");
+            return;
+        }
+        document.getElementById("payment").style.display = "flex";
+    }
+
+    (async function initCheckout() {
+        const token = window.BackendApi.getToken();
+        if (!token) {
+            alert("Please login to continue checkout");
+            window.location.href = "login.html";
+            return;
+        }
+
+        cartItems = await window.BackendApi.syncLegacyCartFromBackend();
+        if (!cartItems.length) {
+            alert("Your cart is empty");
+            window.location.href = "cart.html";
+            return;
+        }
+
+        let subtotal = 0;
+        cartItems.forEach(function (item) {
+            subtotal += Number(item.DiscountPrice || 0) * Number(item.quantity || 1);
+        });
+        setBreakdown(subtotal, 0);
+    })();
+</script>
