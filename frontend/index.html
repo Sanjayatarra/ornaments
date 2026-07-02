@@ -1,463 +1,625 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="img\tanishq_logo_browser_top.png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="img\tanishq_logo_browser_top.png"
+    />
     <title>Home Page</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <script src="https://kit.fontawesome.com/78d13b8fa3.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./styles/footer.css">
-    <link rel="stylesheet" href="./styles/index.css">
-    <link rel="stylesheet" href="./styles/navbar.css">
-</head>
-<body>
-
-
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <script
+      src="https://kit.fontawesome.com/78d13b8fa3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./styles/footer.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/navbar.css" />
+  </head>
+  <body>
     <!-- gajraj begins here -->
-    <div id="navigation_bar">
-
-    </div>
+    <div id="navigation_bar"></div>
     <!-- gajraj part ends here -->
 
-
-
-    
-
-    <!-- <-----------------------Bushra part begin-----------------------------------------------------------------------------> 
+    <!-- <-----------------------Bushra part begin----------------------------------------------------------------------------->
     <div>
-        <div class="firstImg" >
-            <div>
-                <button id="prevbtn" type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Prev"
-                    role="button">Prev</button>
-            </div>
-            <div>
-                <button id="nextbtn" type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next"
-                    role="button">Next</button>
-            </div>
-            <div id="centimg">
-                <!-- Loaded dynamically from DB -->
-            </div>
-        </div>
-
-        <div class="shopByCateg" >
-            <h1 class="text-center h1">Shop By Category</h1>
-            <div id="dbCategoriesGrid" class="categpart1" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; float: none; padding: 0 15px;">
-                <!-- Categories loaded dynamically from DB -->
-            </div>
-            <p id="dbCategoriesStatus" style="text-align:center; font-size:14px; color:#666;"></p>
-        </div>
-
-        
-        <div class="videoBox" >
-            <video  style="object-fit: fill; width:100%;" controlslist="nodownload"
-                preload="metadata" loop="" autoplay="" muted="">
-                <source
-                    src="https://www.tanishq.co.in/wps/wcm/connect/tanishq/ad757134-c1e8-45e8-b089-be50a7f2a8ce/Sangeet-792-no-button.mp4?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0RT10QIMVSTFU3006-ad757134-c1e8-45e8-b089-be50a7f2a8ce-n-RpXb7"
-                    type="video/mp4">
-            </video>
-        </div>
-        
-
+      <div class="firstImg">
         <div>
-            <h1 class="text-center h1">New For You!</h1>
-            <div class="newForYouBox">
-                <div class="tile">
-                    <img src="https://staticimg.titan.co.in/Tanishq/Banners/home/Regional/Engagementringsforhim_480x480px.jpg"
-                        alt="">
-                </div>
-                <div class="tile">
-                    <img src="https://staticimg.titan.co.in/Tanishq/Banners/home/Regional/Engagementrings_PinkBG_480x480px.jpg"
-                        alt="">
-                </div>
-                <div class="tile">
-                    <img src="https://staticimg.titan.co.in/Tanishq/Banners/home/Regional/EngagementBestsellerRings_480x480px.jpg"
-                        alt="">
-                </div>
-            </div>
+          <button
+            id="prevbtn"
+            type="button"
+            data-role="none"
+            class="slick-prev slick-arrow"
+            aria-label="Prev"
+            role="button"
+          >
+            Prev
+          </button>
         </div>
-
         <div>
-            <h1 class="text-center h1">Shop By Gender</h1>
-            <div id="dbGendersGrid" class="shopByGenBox" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; float: none; padding: 0 15px;">
-                <!-- Genders loaded dynamically from DB -->
-            </div>
-            <p id="dbGendersStatus" style="text-align:center; font-size:14px; color:#666;"></p>
+          <button
+            id="nextbtn"
+            type="button"
+            data-role="none"
+            class="slick-next slick-arrow"
+            aria-label="Next"
+            role="button"
+          >
+            Next
+          </button>
         </div>
+        <div id="centimg">
+          <img
+            src="https://www.tanishq.co.in/wps/wcm/connect/tanishq/d6379427-7678-436e-b7f3-970ed4df10dc/desktop/Polki_2500x950.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0RT10QIMVSTFU3006-d6379427-7678-436e-b7f3-970ed4df10dc-desktop-n-mifU0&impolicy=pqlow"
+            alt=""
+          />
+          <img
+            src="https://www.tanishq.co.in/wps/wcm/connect/tanishq/71fa635c-f3ab-49f1-a2f1-f78aa198806d/desktop/2500X950-copy-min.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0RT10QIMVSTFU3006-71fa635c-f3ab-49f1-a2f1-f78aa198806d-desktop-nZOB3Nn&impolicy=pqlow"
+            alt=""
+          />
+          <img
+            src="https://www.tanishq.co.in/wps/wcm/connect/tanishq/08781856-edc2-48d9-9088-5a02ea48e029/desktop/Tanishq_Spring_Banner_2500x950-min.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0RT10QIMVSTFU3006-08781856-edc2-48d9-9088-5a02ea48e029-desktop-n-RkeOa&impolicy=pqlow"
+            alt=""
+          />
+        </div>
+      </div>
 
-        <div class="afterGenderBox" id="dbSpotlightBanners" style="display: none;">
-            <div class="genone" id="dbSpotlightMain"></div>
-            <div class="fourBox" id="dbSpotlightOthers"></div>
-        </div>        <div>
-            <h1 class="text-center h1">Top Sellers</h1>
-            <div id="dbTopSellers" class="caraousel-contain"></div>
-            <p id="dbTopSellersStatus" style="text-align:center; font-size:14px; color:#666;"></p>
+      <div class="shopByCateg">
+        <h1 class="text-center h1">Shop By Category</h1>
+        <div
+          id="dbCategoriesGrid"
+          class="categpart1"
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            float: none;
+            padding: 0 15px;
+          "
+        >
+          <!-- Categories loaded dynamically from DB -->
         </div>
-<div class="rivaahImg col-xs-12 col-md-12">
-            <div class="col-sm-12 content-detail">
-                <img src="https://staticimg.titan.co.in/Tanishq/rivaahLogo-1.png" >
-                <p class="animated" >A jewel for every tradition</p>
-                <p class="truncate-text">Stunning Wedding Jewellery crafted to celebrate the glory of every Indian bride. Please share your details with us and our jewellery expert will be in touch soon </p>
-                <div class="btnFlex" >    
-                    <div class="col-sm-6 col-xs-12" style=" margin-bottom: 6%;">
-                        <button class="arrangeCallBtn col-xs-12 col-md-5" data-target="#submitform" data-toggle="modal" >ARRANGE A CALLBACK</button>
-                    </div>
-                    <div class="col-sm-6 col-xs-12">       
-                        <a href="/rivaah" target="_blank">
-                            <button class="rivaahBtn col-xs-12 col-md-6" >EXPLORE MORE</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <p
+          id="dbCategoriesStatus"
+          style="text-align: center; font-size: 14px; color: #666"
+        ></p>
+      </div>
 
-        <div>
-            <h1 class="text-center h1" >Connect With Us</h1>
-        </div>
+      <div class="videoBox">
+        <video
+          style="object-fit: fill; width: 100%"
+          controlslist="nodownload"
+          preload="metadata"
+          loop=""
+          autoplay=""
+          muted=""
+        >
+          <source
+            src="https://www.tanishq.co.in/wps/wcm/connect/tanishq/ad757134-c1e8-45e8-b089-be50a7f2a8ce/Sangeet-792-no-button.mp4?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0RT10QIMVSTFU3006-ad757134-c1e8-45e8-b089-be50a7f2a8ce-n-RpXb7"
+            type="video/mp4"
+          />
+        </video>
+      </div>
 
-        <div class="connectWithUs" >
-            <div class="connectBox">
-                <a href="https://api.whatsapp.com/send?phone=91https://api.whatsapp.com/send?phone=6366920017&amp;text=Hi,%20Can%20I%20connect%20with%20Tanishq%20customer%20care!&amp;text=Hi,%20Can%20I%20connect%20with%20Tanishq%20customer%20care">
-                    <img src="https://staticimg.titan.co.in/Tanishq/Banners/home/BrandStory/JanConnectOnWhatsapp360x360.jpg">
-                </a>
-            </div>
-            <div class="connectBox">
-                <a href="https://www.tanishq.co.in/book-an-appointment?cm_sp=HP-_-brandstory-_-bookanappointment">
-                    <img src="https://staticimg.titan.co.in/Tanishq/Banners/home/BrandStory/JanBookAnAppointment360x360.jpg">
-                </a>
-            </div>
-            <div class="connectBox">
-                <a href="https://www.tanishq.co.in/video-call?cm_sp=HP-_-brandstory-_-videocal">
-                    <img src="https://staticimg.titan.co.in/Tanishq/Banners/home/BrandStory/JanScheduleaVideoCall360x360.jpg">
-                </a>
-            </div>
+      <div>
+        <h1 class="text-center h1">New For You!</h1>
+        <div class="newForYouBox">
+          <div class="tile">
+            <img
+              src="https://staticimg.titan.co.in/Tanishq/Banners/home/Regional/Engagementringsforhim_480x480px.jpg"
+              alt=""
+            />
+          </div>
+          <div class="tile">
+            <img
+              src="https://staticimg.titan.co.in/Tanishq/Banners/home/Regional/Engagementrings_PinkBG_480x480px.jpg"
+              alt=""
+            />
+          </div>
+          <div class="tile">
+            <img
+              src="https://staticimg.titan.co.in/Tanishq/Banners/home/Regional/EngagementBestsellerRings_480x480px.jpg"
+              alt=""
+            />
+          </div>
         </div>
+      </div>
+
+      <div>
+        <h1 class="text-center h1">Shop By Gender</h1>
+        <div
+          id="dbGendersGrid"
+          class="shopByGenBox"
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            float: none;
+            padding: 0 15px;
+          "
+        >
+          <!-- Genders loaded dynamically from DB -->
+        </div>
+        <p
+          id="dbGendersStatus"
+          style="text-align: center; font-size: 14px; color: #666"
+        ></p>
+      </div>
+
+      <div class="afterGenderBox" id="dbSpotlightBanners" style="display: none">
+        <div class="genone" id="dbSpotlightMain"></div>
+        <div class="fourBox" id="dbSpotlightOthers"></div>
+      </div>
+      <div>
+        <h1 class="text-center h1">Top Sellers</h1>
+        <div id="dbTopSellers" class="caraousel-contain"></div>
+        <p
+          id="dbTopSellersStatus"
+          style="text-align: center; font-size: 14px; color: #666"
+        ></p>
+      </div>
+      <div class="rivaahImg col-xs-12 col-md-12">
+        <div class="col-sm-12 content-detail">
+          <img src="https://staticimg.titan.co.in/Tanishq/rivaahLogo-1.png" />
+          <p class="animated">A jewel for every tradition</p>
+          <p class="truncate-text">
+            Stunning Wedding Jewellery crafted to celebrate the glory of every
+            Indian bride. Please share your details with us and our jewellery
+            expert will be in touch soon
+          </p>
+          <div class="btnFlex">
+            <div class="col-sm-6 col-xs-12" style="margin-bottom: 6%">
+              <button
+                class="arrangeCallBtn col-xs-12 col-md-5"
+                data-target="#submitform"
+                data-toggle="modal"
+              >
+                ARRANGE A CALLBACK
+              </button>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <a href="/rivaah" target="_blank">
+                <button class="rivaahBtn col-xs-12 col-md-6">
+                  EXPLORE MORE
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h1 class="text-center h1">Connect With Us</h1>
+      </div>
+
+      <div class="connectWithUs">
+        <div class="connectBox">
+          <a
+            href="https://api.whatsapp.com/send?phone=91https://api.whatsapp.com/send?phone=6366920017&amp;text=Hi,%20Can%20I%20connect%20with%20Tanishq%20customer%20care!&amp;text=Hi,%20Can%20I%20connect%20with%20Tanishq%20customer%20care"
+          >
+            <img
+              src="https://staticimg.titan.co.in/Tanishq/Banners/home/BrandStory/JanConnectOnWhatsapp360x360.jpg"
+            />
+          </a>
+        </div>
+        <div class="connectBox">
+          <a
+            href="https://www.tanishq.co.in/book-an-appointment?cm_sp=HP-_-brandstory-_-bookanappointment"
+          >
+            <img
+              src="https://staticimg.titan.co.in/Tanishq/Banners/home/BrandStory/JanBookAnAppointment360x360.jpg"
+            />
+          </a>
+        </div>
+        <div class="connectBox">
+          <a
+            href="https://www.tanishq.co.in/video-call?cm_sp=HP-_-brandstory-_-videocal"
+          >
+            <img
+              src="https://staticimg.titan.co.in/Tanishq/Banners/home/BrandStory/JanScheduleaVideoCall360x360.jpg"
+            />
+          </a>
+        </div>
+      </div>
     </div>
     <!-- bushra part ends here -------------------------------------------------------------------------------------------------->
 
     <!-- <---------------------------------------shahbaj part begins here--------------------------------------------------------------------->
-    <h2 style="text-align: center;">Customer Reviews</h2>
+    <h2 style="text-align: center">Customer Reviews</h2>
     <div id="dbCustomerReviews" class="connectWithUs"></div>
-    <p id="dbReviewsStatus" style="text-align:center; font-size:14px; color:#666;"></p>
+    <p
+      id="dbReviewsStatus"
+      style="text-align: center; font-size: 14px; color: #666"
+    ></p>
 
-    <span style="margin-left: 95%;">Poweredby</span>
+    <span style="margin-left: 95%">Poweredby</span>
     <div id="ORIGINAL">
-       <div id="Box1">
-           <h2 style="text-align: center;font-size: 15px;">100% ORIGINAL</h2>
-           <h2 style="text-align: center;font-size: 15px;">All products are original and go through strict quality check.</h2>
-       </div>
-       <div>
-           <h2 style="text-align: center;font-size: 15px;">A TATA PRODUCT</h2>
-           <h2 style="text-align: center;font-size: 15px;">The Tata seal of Trust comes with all our products</h2>
-       </div>
-       <div>
-          <h2 style="text-align: center;font-size: 15px;">SHIPPING</h2>
-           <h2 style="text-align: center;font-size: 15px;">Shipping in India is free. Shipping charges applicable for International locations.</h2>
-       </div>
+      <div id="Box1">
+        <h2 style="text-align: center; font-size: 15px">100% ORIGINAL</h2>
+        <h2 style="text-align: center; font-size: 15px">
+          All products are original and go through strict quality check.
+        </h2>
+      </div>
+      <div>
+        <h2 style="text-align: center; font-size: 15px">A TATA PRODUCT</h2>
+        <h2 style="text-align: center; font-size: 15px">
+          The Tata seal of Trust comes with all our products
+        </h2>
+      </div>
+      <div>
+        <h2 style="text-align: center; font-size: 15px">SHIPPING</h2>
+        <h2 style="text-align: center; font-size: 15px">
+          Shipping in India is free. Shipping charges applicable for
+          International locations.
+        </h2>
+      </div>
     </div>
     <div id="Footer"></div>
     <!-- shahbaj part ends here ---------------------------------------------------------------------->
-
-</body>
+  </body>
 </html>
 <script src="scripts\backendApi.js"></script>
 <script type="module">
+  // gajraj part ends here ----------------------------------------------------------------------
 
-    
-    // gajraj part ends here ----------------------------------------------------------------------
-    
-    import { navbar } from "./components/navbar.js"
-    let navigation_bar = document.getElementById("navigation_bar");
-    navigation_bar.innerHTML=navbar()
-    window.BackendApi.syncLegacyCartFromBackend().then(function () {
-        window.BackendApi.hydrateNavbar();
-    });
+  import { navbar } from "./components/navbar.js";
+  let navigation_bar = document.getElementById("navigation_bar");
+  navigation_bar.innerHTML = navbar();
+  window.BackendApi.syncLegacyCartFromBackend().then(function () {
+    window.BackendApi.hydrateNavbar();
+  });
 
-    search.addEventListener('click', () => {
-        window.location.href = "products.html";
-    })
+  search.addEventListener("click", () => {
+    window.location.href = "products.html";
+  });
 
-    // shahbaj alam
-    import {footer} from "./components/footer.js"
+  // shahbaj alam
+  import { footer } from "./components/footer.js";
 
-    let Footer = document.getElementById("Footer")
-    Footer.innerHTML=footer()
+  let Footer = document.getElementById("Footer");
+  Footer.innerHTML = footer();
 
-    // bushra part js
-    var item = 1
-    document.querySelector("#prevbtn").addEventListener('click', prev)
-    document.querySelector("#nextbtn").addEventListener('click', next)
+  // bushra part js
+  var item = 1;
+  document.querySelector("#prevbtn").addEventListener("click", prev);
+  document.querySelector("#nextbtn").addEventListener("click", next);
 
-    function prev() {
-        var items = document.querySelectorAll("#centimg > img");
-        if (item === 1) {
-            item = items.length;
-        } else {
-            item--;
-        }
-        runslider()
+  function prev() {
+    var items = document.querySelectorAll("#centimg > img");
+    if (item === 1) {
+      item = items.length;
+    } else {
+      item--;
+    }
+    runslider();
+  }
+
+  function next() {
+    var items = document.querySelectorAll("#centimg > img");
+    if (item === items.length) {
+      item = 1;
+    } else {
+      item++;
+    }
+    runslider();
+  }
+  function runslider() {
+    var items = document.querySelectorAll("#centimg > img");
+    if (items.length === 0) return;
+    var container = document.getElementById("centimg");
+    if (container) {
+      container.style.transform = "translateX(-" + ((item - 1) * 100) + "%)";
+      for (var i = 0; i < items.length; i++) {
+        items[i].style.display = "block";
+      }
+    }
+  }
+  runslider();
+  setInterval(next, 1000);
+  function escapeHtml(value) {
+    return String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function formatPrice(value) {
+    const amount = Number(value || 0);
+    return "Rs. " + amount.toLocaleString("en-IN");
+  }
+
+  function renderDbCategories(categories) {
+    const mount = document.getElementById("dbCategoriesGrid");
+    if (!mount) return;
+
+    mount.innerHTML = categories
+      .map(function (c) {
+        const image = c.image || "";
+        const name = c.name;
+        return (
+          '<div style="flex: 0 0 calc(16.66% - 20px); min-width: 120px; text-align: center; cursor: pointer; margin-bottom: 20px;" onclick="window.location.href=\'products.html?category=' +
+          encodeURIComponent(name) +
+          "'\">" +
+          '<img src="' +
+          escapeHtml(image) +
+          '" alt="' +
+          escapeHtml(name) +
+          '" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 1px solid #e9e9e9; transition: transform 0.2s;" class="shadow-on-hover">' +
+          '<h3 style="font-size: 13px; font-weight: 600; margin-top: 10px; text-transform: uppercase; color: #333; letter-spacing: 0.5px;">' +
+          escapeHtml(name) +
+          "</h3>" +
+          "</div>"
+        );
+      })
+      .join("");
+  }
+
+  function renderDbGenders(genders) {
+    const mount = document.getElementById("dbGendersGrid");
+    if (!mount) return;
+
+    mount.innerHTML = genders
+      .map(function (g) {
+        const image = g.image || "";
+        return (
+          '<div style="flex: 1; min-width: 250px; max-width: 380px; text-align: center; cursor: pointer; margin-bottom: 20px;" onclick="window.location.href=\'products.html?gender=' +
+          encodeURIComponent(g.name) +
+          "'\">" +
+          '<img src="' +
+          escapeHtml(image) +
+          '" alt="' +
+          escapeHtml(g.name) +
+          '" style="width: 100%; height: 350px; border-radius: 8px; object-fit: cover; border: 1px solid #e9e9e9;">' +
+          '<h3 class="text-center" style="margin:15px auto 20px; color:#000; letter-spacing:1px; font-size:14px; text-transform: uppercase; font-weight: 600;">' +
+          escapeHtml(g.name) +
+          "</h3>" +
+          "</div>"
+        );
+      })
+      .join("");
+  }
+
+  function renderDbBanners(banners) {
+    const mount = document.getElementById("dbSpotlightBanners");
+    const mainMount = document.getElementById("dbSpotlightMain");
+    const othersMount = document.getElementById("dbSpotlightOthers");
+    if (!mount || !mainMount || !othersMount) return;
+
+    const mainBanner = (banners || []).find((b) => b.name === "Spotlight Main");
+    const otherBanners = [
+      (banners || []).find((b) => b.name === "Spotlight 1"),
+      (banners || []).find((b) => b.name === "Spotlight 2"),
+      (banners || []).find((b) => b.name === "Spotlight 3"),
+      (banners || []).find((b) => b.name === "Spotlight 4"),
+    ].filter(Boolean);
+
+    if (mainBanner && mainBanner.image) {
+      mainMount.innerHTML =
+        '<img class="img-responsive" src="' +
+        escapeHtml(mainBanner.image) +
+        '" style="width:100%;margin-bottom: 5px; cursor: pointer;" onclick="window.location.href=\'' +
+        escapeHtml(mainBanner.target_url || "products.html") +
+        "'\">";
+    } else {
+      mainMount.innerHTML = "";
     }
 
-    function next() {
-        var items = document.querySelectorAll("#centimg > img");
-        if (item === items.length) {
-            item = 1;
-        } else {
-            item++;
-        }
-        runslider()
+    othersMount.innerHTML = otherBanners
+      .map(function (b) {
+        if (!b.image) return "";
+        return (
+          "<div onclick=\"window.location.href='" +
+          escapeHtml(b.target_url || "products.html") +
+          '\'" style="cursor: pointer;">' +
+          '<img class="img-responsive" src="' +
+          escapeHtml(b.image) +
+          '" style="width:100%;">' +
+          "</div>"
+        );
+      })
+      .join("");
+
+    if ((mainBanner && mainBanner.image) || otherBanners.length > 0) {
+      mount.style.display = "block";
     }
-    function runslider() {
-        var items = document.querySelectorAll("#centimg > img");
-        for (var i = 0; i < items.length; i++) {
-            if (i + 1 === item) {
-                items[i].style.display = "block";
-            } else {
-                items[i].style.display = "none";
-            }
-        }
+  }
 
-    }
-    runslider()
-    setInterval(next, 8000);
-    function escapeHtml(value) {
-        return String(value || "")
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/\"/g, "&quot;")
-            .replace(/'/g, "&#39;");
-    }
+  function renderDbTopSellers(products) {
+    const mount = document.getElementById("dbTopSellers");
+    if (!mount) return;
 
-    function formatPrice(value) {
-        const amount = Number(value || 0);
-        return "Rs. " + amount.toLocaleString("en-IN");
-    }
+    mount.style.display = "grid";
+    mount.style.gridTemplateColumns = "repeat(auto-fit, minmax(220px, 1fr))";
+    mount.style.gap = "16px";
 
-    function renderDbCategories(categories) {
-        const mount = document.getElementById("dbCategoriesGrid");
-        if (!mount) return;
+    mount.innerHTML = products
+      .map(function (p) {
+        const image =
+          Array.isArray(p.images) && p.images.length
+            ? p.images[0]
+            : "https://via.placeholder.com/300?text=Jewellery";
+        const price = p.selling_price != null ? p.selling_price : p.price;
+        const slug = encodeURIComponent(p.slug || "");
+        return (
+          '<a href="productsDetail.html?slug=' +
+          slug +
+          '" style="display:block;text-decoration:none;color:inherit;">' +
+          '<div class="topSellersElem" style="padding:10px; background:#fff; border:1px solid #e9e9e9;">' +
+          '<img src="' +
+          escapeHtml(image) +
+          '" alt="' +
+          escapeHtml(p.name) +
+          '" style="width:100%;height:220px;object-fit:cover;">' +
+          '<h3 style="font-size:14px; margin-top:10px; min-height:34px;">' +
+          escapeHtml(p.name) +
+          "</h3>" +
+          '<h4 style="margin-top:8px;">' +
+          formatPrice(price) +
+          "</h4>" +
+          "</div>" +
+          "</a>"
+        );
+      })
+      .join("");
+  }
 
-        mount.innerHTML = categories.map(function (c) {
-            const image = c.image || "";
-            const name = c.name;
-            return '<div style="flex: 0 0 calc(16.66% - 20px); min-width: 120px; text-align: center; cursor: pointer; margin-bottom: 20px;" onclick="window.location.href=\'products.html?category=' + encodeURIComponent(name) + '\'">'
-                + '<img src="' + escapeHtml(image) + '" alt="' + escapeHtml(name) + '" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 1px solid #e9e9e9; transition: transform 0.2s;" class="shadow-on-hover">'
-                + '<h3 style="font-size: 13px; font-weight: 600; margin-top: 10px; text-transform: uppercase; color: #333; letter-spacing: 0.5px;">' + escapeHtml(name) + '</h3>'
-                + '</div>';
-        }).join("");
-    }
+  function renderDbReviews(reviews) {
+    const mount = document.getElementById("dbCustomerReviews");
+    if (!mount) return;
 
-    function renderDbGenders(genders) {
-        const mount = document.getElementById("dbGendersGrid");
-        if (!mount) return;
+    mount.style.display = "grid";
+    mount.style.gridTemplateColumns = "repeat(auto-fit, minmax(250px, 1fr))";
+    mount.style.gap = "16px";
 
-        mount.innerHTML = genders.map(function (g) {
-            const image = g.image || "";
-            return '<div style="flex: 1; min-width: 250px; max-width: 380px; text-align: center; cursor: pointer; margin-bottom: 20px;" onclick="window.location.href=\'products.html?gender=' + encodeURIComponent(g.name) + '\'">'
-                + '<img src="' + escapeHtml(image) + '" alt="' + escapeHtml(g.name) + '" style="width: 100%; height: 350px; border-radius: 8px; object-fit: cover; border: 1px solid #e9e9e9;">'
-                + '<h3 class="text-center" style="margin:15px auto 20px; color:#000; letter-spacing:1px; font-size:14px; text-transform: uppercase; font-weight: 600;">' + escapeHtml(g.name) + '</h3>'
-                + '</div>';
-        }).join("");
-    }
+    mount.innerHTML = reviews
+      .map(function (item) {
+        const dateText = item.created_at
+          ? new Date(item.created_at).toLocaleDateString("en-IN")
+          : "";
+        const stars = "*".repeat(
+          Math.max(1, Math.min(5, Number(item.rating || 5))),
+        );
+        const title = item.title || "Verified Purchase";
+        const comment =
+          item.comment || "Beautiful craftsmanship and excellent quality.";
+        const name = item.user_name || "Verified Buyer";
 
-    function renderDbBanners(banners) {
-        // 1. Populate top slider
-        const centimg = document.getElementById("centimg");
-        if (centimg) {
-            const slides = [
-                (banners || []).find(b => b.name === 'Hero Slide 1'),
-                (banners || []).find(b => b.name === 'Hero Slide 2'),
-                (banners || []).find(b => b.name === 'Hero Slide 3')
-            ].filter(Boolean);
-            
-            if (slides.length > 0) {
-                centimg.innerHTML = slides.map(function (slide, idx) {
-                    const displayStyle = idx === 0 ? "block" : "none";
-                    return '<img src="' + escapeHtml(slide.image || '') + '" alt="" style="display: ' + displayStyle + '; cursor: pointer; width: 100%;" onclick="window.location.href=\'' + escapeHtml(slide.target_url || 'products.html') + '\'">';
-                }).join("");
-                
-                // Re-run slider settings
-                item = 1;
-                runslider();
-            }
-        }
+        return (
+          '<div style="background:#fff; border:1px solid #e9e9e9; padding:14px;">' +
+          '<div style="font-size:14px; color:#c59d5f;">' +
+          stars +
+          "</div>" +
+          '<div style="font-size:12px; color:#666; margin-top:6px;">' +
+          escapeHtml(dateText) +
+          "</div>" +
+          '<h4 style="margin:8px 0 6px 0; font-size:14px;">' +
+          escapeHtml(title) +
+          "</h4>" +
+          '<p style="font-size:12px; margin:0 0 8px 0;">' +
+          escapeHtml(comment) +
+          "</p>" +
+          '<h5 style="font-size:11px; margin:0; letter-spacing:0.5px;">' +
+          escapeHtml(name) +
+          "</h5>" +
+          "</div>"
+        );
+      })
+      .join("");
+  }
 
-        // 2. Populate spotlight section
-        const mount = document.getElementById("dbSpotlightBanners");
-        const mainMount = document.getElementById("dbSpotlightMain");
-        const othersMount = document.getElementById("dbSpotlightOthers");
-        if (!mount || !mainMount || !othersMount) return;
+  async function loadDbHomeData() {
+    const topStatus = document.getElementById("dbTopSellersStatus");
+    const reviewStatus = document.getElementById("dbReviewsStatus");
+    const categoryStatus = document.getElementById("dbCategoriesStatus");
+    const genderStatus = document.getElementById("dbGendersStatus");
 
-        const mainBanner = (banners || []).find(b => b.name === 'Spotlight Main');
-        const otherBanners = [
-            (banners || []).find(b => b.name === 'Spotlight 1'),
-            (banners || []).find(b => b.name === 'Spotlight 2'),
-            (banners || []).find(b => b.name === 'Spotlight 3'),
-            (banners || []).find(b => b.name === 'Spotlight 4')
-        ].filter(Boolean);
+    if (categoryStatus) categoryStatus.textContent = "Loading categories...";
+    if (genderStatus) genderStatus.textContent = "Loading genders...";
+    if (topStatus) topStatus.textContent = "Loading products...";
 
-        if (mainBanner && mainBanner.image) {
-            mainMount.innerHTML = '<img class="img-responsive" src="' + escapeHtml(mainBanner.image) + '" style="width:100%;margin-bottom: 5px; cursor: pointer;" onclick="window.location.href=\'' + escapeHtml(mainBanner.target_url || 'products.html') + '\'">';
-        } else {
-            mainMount.innerHTML = '';
-        }
-
-        othersMount.innerHTML = otherBanners.map(function (b) {
-            if (!b.image) return '';
-            return '<div onclick="window.location.href=\'' + escapeHtml(b.target_url || 'products.html') + '\'" style="cursor: pointer;">'
-                + '<img class="img-responsive" src="' + escapeHtml(b.image) + '" style="width:100%;">'
-                + '</div>';
-        }).join("");
-
-        if ((mainBanner && mainBanner.image) || otherBanners.length > 0) {
-            mount.style.display = "block";
-        }
-    }
-
-    function renderDbTopSellers(products) {
-        const mount = document.getElementById("dbTopSellers");
-        if (!mount) return;
-
-        mount.style.display = "grid";
-        mount.style.gridTemplateColumns = "repeat(auto-fit, minmax(220px, 1fr))";
-        mount.style.gap = "16px";
-
-        mount.innerHTML = products.map(function (p) {
-            const image = Array.isArray(p.images) && p.images.length ? p.images[0] : "https://via.placeholder.com/300?text=Jewellery";
-            const price = p.selling_price != null ? p.selling_price : p.price;
-            const slug = encodeURIComponent(p.slug || "");
-            return '<a href="productsDetail.html?slug=' + slug + '" style="display:block;text-decoration:none;color:inherit;">'
-                + '<div class="topSellersElem" style="padding:10px; background:#fff; border:1px solid #e9e9e9;">'
-                + '<img src="' + escapeHtml(image) + '" alt="' + escapeHtml(p.name) + '" style="width:100%;height:220px;object-fit:cover;">'
-                + '<h3 style="font-size:14px; margin-top:10px; min-height:34px;">' + escapeHtml(p.name) + '</h3>'
-                + '<h4 style="margin-top:8px;">' + formatPrice(price) + '</h4>'
-                + '</div>'
-                + '</a>';
-        }).join("");
+    // 1. Fetch Categories
+    try {
+      const categories = await window.BackendApi.request("/categories");
+      if (Array.isArray(categories) && categories.length > 0) {
+        renderDbCategories(categories);
+        if (categoryStatus) categoryStatus.textContent = "";
+      } else {
+        if (categoryStatus)
+          categoryStatus.textContent = "No categories available.";
+      }
+    } catch (e) {
+      if (categoryStatus)
+        categoryStatus.textContent = "Failed to load categories.";
     }
 
-    function renderDbReviews(reviews) {
-        const mount = document.getElementById("dbCustomerReviews");
-        if (!mount) return;
-
-        mount.style.display = "grid";
-        mount.style.gridTemplateColumns = "repeat(auto-fit, minmax(250px, 1fr))";
-        mount.style.gap = "16px";
-
-        mount.innerHTML = reviews.map(function (item) {
-            const dateText = item.created_at ? new Date(item.created_at).toLocaleDateString("en-IN") : "";
-            const stars = "*".repeat(Math.max(1, Math.min(5, Number(item.rating || 5))));
-            const title = item.title || "Verified Purchase";
-            const comment = item.comment || "Beautiful craftsmanship and excellent quality.";
-            const name = item.user_name || "Verified Buyer";
-
-            return '<div style="background:#fff; border:1px solid #e9e9e9; padding:14px;">'
-                + '<div style="font-size:14px; color:#c59d5f;">' + stars + '</div>'
-                + '<div style="font-size:12px; color:#666; margin-top:6px;">' + escapeHtml(dateText) + '</div>'
-                + '<h4 style="margin:8px 0 6px 0; font-size:14px;">' + escapeHtml(title) + '</h4>'
-                + '<p style="font-size:12px; margin:0 0 8px 0;">' + escapeHtml(comment) + '</p>'
-                + '<h5 style="font-size:11px; margin:0; letter-spacing:0.5px;">' + escapeHtml(name) + '</h5>'
-                + '</div>';
-        }).join("");
+    // 1.5. Fetch Storefront Banners
+    try {
+      const banners = await window.BackendApi.request("/storefront_banners");
+      const activeBanners = (banners || []).filter((b) => b.active !== false);
+      renderDbBanners(activeBanners);
+    } catch (e) {
+      console.error("Failed to load storefront banners:", e);
     }
 
-    async function loadDbHomeData() {
-        const topStatus = document.getElementById("dbTopSellersStatus");
-        const reviewStatus = document.getElementById("dbReviewsStatus");
-        const categoryStatus = document.getElementById("dbCategoriesStatus");
-        const genderStatus = document.getElementById("dbGendersStatus");
+    // 2. Fetch Genders
+    try {
+      const genders = await window.BackendApi.request("/genders");
+      const activeGenders = (genders || []).filter((g) => g.active !== false);
+      if (activeGenders.length > 0) {
+        renderDbGenders(activeGenders);
+        if (genderStatus) genderStatus.textContent = "";
+      } else {
+        if (genderStatus) genderStatus.textContent = "No genders available.";
+      }
+    } catch (e) {
+      if (genderStatus) genderStatus.textContent = "Failed to load genders.";
+    }
 
-        if (categoryStatus) categoryStatus.textContent = "Loading categories...";
-        if (genderStatus) genderStatus.textContent = "Loading genders...";
-        if (topStatus) topStatus.textContent = "Loading products...";
+    // 3. Fetch Top Sellers & Reviews
+    try {
+      const products = await window.BackendApi.request("/products");
 
-        // 1. Fetch Categories
+      // Filter by featured or Best Seller/Trending tags
+      let topProducts = (products || []).filter(function (p) {
+        return (
+          p.featured === true ||
+          (Array.isArray(p.tags) &&
+            (p.tags.indexOf("Best Seller") >= 0 ||
+              p.tags.indexOf("Trending") >= 0))
+        );
+      });
+
+      if (!topProducts.length && Array.isArray(products)) {
+        topProducts = products.slice(0, 8);
+      }
+
+      if (!topProducts.length) {
+        if (topStatus)
+          topStatus.textContent = "No products available in database.";
+      } else {
+        renderDbTopSellers(topProducts.slice(0, 8));
+        if (topStatus) topStatus.textContent = "";
+      }
+
+      const allReviews = [];
+      for (let i = 0; i < Math.min(topProducts.length, 6); i++) {
+        const product = topProducts[i];
         try {
-            const categories = await window.BackendApi.request("/categories");
-            if (Array.isArray(categories) && categories.length > 0) {
-                renderDbCategories(categories);
-                if (categoryStatus) categoryStatus.textContent = "";
-            } else {
-                if (categoryStatus) categoryStatus.textContent = "No categories available.";
-            }
-        } catch (e) {
-            if (categoryStatus) categoryStatus.textContent = "Failed to load categories.";
-        }
-
-        // 1.5. Fetch Storefront Banners
-        try {
-            const banners = await window.BackendApi.request("/storefront_banners");
-            const activeBanners = (banners || []).filter(b => b.active !== false);
-            renderDbBanners(activeBanners);
-        } catch (e) {
-            console.error("Failed to load storefront banners:", e);
-        }
-
-        // 2. Fetch Genders
-        try {
-            const genders = await window.BackendApi.request("/genders");
-            const activeGenders = (genders || []).filter(g => g.active !== false);
-            if (activeGenders.length > 0) {
-                renderDbGenders(activeGenders);
-                if (genderStatus) genderStatus.textContent = "";
-            } else {
-                if (genderStatus) genderStatus.textContent = "No genders available.";
-            }
-        } catch (e) {
-            if (genderStatus) genderStatus.textContent = "Failed to load genders.";
-        }
-
-        // 3. Fetch Top Sellers & Reviews
-        try {
-            const products = await window.BackendApi.request("/products");
-            
-            // Filter by featured or Best Seller/Trending tags
-            let topProducts = (products || []).filter(function (p) {
-                return p.featured === true || 
-                       (Array.isArray(p.tags) && (p.tags.indexOf("Best Seller") >= 0 || p.tags.indexOf("Trending") >= 0));
-            });
-
-            if (!topProducts.length && Array.isArray(products)) {
-                topProducts = products.slice(0, 8);
-            }
-
-            if (!topProducts.length) {
-                if (topStatus) topStatus.textContent = "No products available in database.";
-            } else {
-                renderDbTopSellers(topProducts.slice(0, 8));
-                if (topStatus) topStatus.textContent = "";
-            }
-
-            const allReviews = [];
-            for (let i = 0; i < Math.min(topProducts.length, 6); i++) {
-                const product = topProducts[i];
-                try {
-                    const productReviews = await window.BackendApi.request("/reviews/product/" + product.id);
-                    if (Array.isArray(productReviews) && productReviews.length) {
-                        allReviews.push.apply(allReviews, productReviews);
-                    }
-                } catch (error) {
-                    // Ignore per-product review errors
-                }
-                if (allReviews.length >= 6) break;
-            }
-
-            if (allReviews.length) {
-                renderDbReviews(allReviews.slice(0, 6));
-                if (reviewStatus) reviewStatus.textContent = "";
-            } else {
-                if (reviewStatus) reviewStatus.textContent = "No reviews available in database yet.";
-            }
+          const productReviews = await window.BackendApi.request(
+            "/reviews/product/" + product.id,
+          );
+          if (Array.isArray(productReviews) && productReviews.length) {
+            allReviews.push.apply(allReviews, productReviews);
+          }
         } catch (error) {
-            if (topStatus) topStatus.textContent = "Failed to load data from database.";
-            if (reviewStatus) reviewStatus.textContent = "";
+          // Ignore per-product review errors
         }
+        if (allReviews.length >= 6) break;
+      }
+
+      if (allReviews.length) {
+        renderDbReviews(allReviews.slice(0, 6));
+        if (reviewStatus) reviewStatus.textContent = "";
+      } else {
+        if (reviewStatus)
+          reviewStatus.textContent = "No reviews available in database yet.";
+      }
+    } catch (error) {
+      if (topStatus)
+        topStatus.textContent = "Failed to load data from database.";
+      if (reviewStatus) reviewStatus.textContent = "";
     }
+  }
 
-    loadDbHomeData();
+  loadDbHomeData();
 </script>
-
-
-

@@ -9,7 +9,7 @@ const PURITIES = {
   Silver: ["925", "999"]
 }
 const OCCASIONS = [
-  "Wedding", "Daily Wear", "Office Wear", "Temple Jewellery", 
+  "Wedding", "Daily Wear", "Office Wear", "Temple Jewellery",
   "Antique", "Luxury", "Kids", "Festive"
 ]
 const GENDERS = ["Men", "Women", "Unisex", "Kids"]
@@ -124,7 +124,7 @@ function App() {
         const data = await res.json()
         const items = data.results || data
         setMetalsList(items)
-        
+
         const goldItem = items.find(m => m.name.toLowerCase() === 'gold')
         const silverItem = items.find(m => m.name.toLowerCase() === 'silver')
         if (goldItem) setGoldPrice(goldItem.price_per_gram)
@@ -140,7 +140,7 @@ function App() {
         const data = await res.json()
         const items = data.results || data || []
         setBannersList(items)
-        
+
         const active = items.find(b => b.name === 'Spotlight Main')
         if (active) {
           setBannerImgUrl(active.image || '')
@@ -158,20 +158,20 @@ function App() {
 
   // Real-time calculated pricing previews
   const currentMetalPrice = formData.metal.toLowerCase() === 'gold' ? parseFloat(goldPrice || 0) : parseFloat(silverPrice || 0)
-  const purityPct = formData.purity === '24K' || formData.purity === '999' ? 99.9 
-                  : (formData.purity === '22K' ? 91.6 
-                  : (formData.purity === '18K' ? 75.0 
-                  : (formData.purity === '14K' ? 58.3 
-                  : (formData.purity === '925' ? 92.5 : 100.0))))
-  
+  const purityPct = formData.purity === '24K' || formData.purity === '999' ? 99.9
+    : (formData.purity === '22K' ? 91.6
+      : (formData.purity === '18K' ? 75.0
+        : (formData.purity === '14K' ? 58.3
+          : (formData.purity === '925' ? 92.5 : 100.0))))
+
   const estimatedMetalValue = (parseFloat(formData.weight || 0) * currentMetalPrice * (purityPct / 100)).toFixed(2)
   const estimatedSubtotal = parseFloat(estimatedMetalValue) + parseFloat(formData.stone_value || 0) + parseFloat(formData.making_charge || 0)
   const gstRate = parseFloat(formData.gst || 0)
   const estimatedGstAmount = (estimatedSubtotal * gstRate / 100).toFixed(2)
-  
+
   const sellingPrice = (
-    estimatedSubtotal + 
-    parseFloat(estimatedGstAmount) - 
+    estimatedSubtotal +
+    parseFloat(estimatedGstAmount) -
     parseFloat(formData.discount || 0)
   ).toFixed(2)
 
@@ -236,7 +236,7 @@ function App() {
     try {
       const goldItem = metalsList.find(m => m.name.toLowerCase() === 'gold')
       const silverItem = metalsList.find(m => m.name.toLowerCase() === 'silver')
-      
+
       if (goldItem) {
         await fetch(`http://localhost:8000/api/metals/${goldItem.id}/`, {
           method: 'PATCH',
@@ -252,7 +252,7 @@ function App() {
         })
       }
       setStatus({ type: 'success', message: 'Metal prices updated successfully! All product prices recalculated.' })
-      
+
       // Refresh metals from backend
       const res = await fetch('http://localhost:8000/api/metals/')
       const data = await res.json()
@@ -365,7 +365,7 @@ function App() {
       if (!banner) {
         throw new Error(`Banner "${selectedBannerName}" not found in database. Please run migrations and seed data.`)
       }
-      
+
       const res = await fetch(`http://localhost:8000/api/storefront_banners/${banner.id}/`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
@@ -378,7 +378,7 @@ function App() {
         throw new Error('Failed to update banner')
       }
       setStatus({ type: 'success', message: `Storefront Banner "${selectedBannerName}" updated successfully!` })
-      
+
       // Refresh banners
       const refreshRes = await fetch('http://localhost:8000/api/storefront_banners/')
       const data = await refreshRes.json()
@@ -461,19 +461,19 @@ function App() {
       // 1. Resolve master tables
       setStatus({ type: 'info', message: 'Resolving metal & purity references...' })
       const metalId = await getOrCreateMaster("metals", { name: formData.metal }, "name", formData.metal)
-      
-      const pct = formData.purity === '24K' || formData.purity === '999' ? 99.9 
-                  : (formData.purity === '22K' ? 91.6 
-                  : (formData.purity === '18K' ? 75.0 
-                  : (formData.purity === '14K' ? 58.3 
-                  : (formData.purity === '925' ? 92.5 : 100))))
-      
+
+      const pct = formData.purity === '24K' || formData.purity === '999' ? 99.9
+        : (formData.purity === '22K' ? 91.6
+          : (formData.purity === '18K' ? 75.0
+            : (formData.purity === '14K' ? 58.3
+              : (formData.purity === '925' ? 92.5 : 100))))
+
       const purityId = await getOrCreateMaster("purities", { name: formData.purity, purity_percent: pct }, "name", formData.purity)
 
       setStatus({ type: 'info', message: 'Resolving category, gender & certification references...' })
       const categoryId = await getOrCreateMaster("categories", { name: formData.category, slug: slugify(formData.category) }, "name", formData.category)
       const genderId = await getOrCreateMaster("genders", { name: formData.gender }, "name", formData.gender)
-      
+
       let certId = null
       if (formData.certification !== 'None') {
         certId = await getOrCreateMaster("certifications", { name: formData.certification }, "name", formData.certification)
@@ -550,7 +550,7 @@ function App() {
 
       // 6. Create ProductVariant
       setStatus({ type: 'info', message: 'Creating Product Variant & Pricing...' })
-      const skuVal = formData.sku || `${formData.name.substring(0,4).toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`
+      const skuVal = formData.sku || `${formData.name.substring(0, 4).toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`
       const barcodeVal = formData.barcode || `BAR-${Math.floor(10000000 + Math.random() * 90000000)}`
 
       const varRes = await fetch('http://localhost:8000/api/product_variants/', {
@@ -649,15 +649,15 @@ function App() {
           <form onSubmit={handleCategorySubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <div className="input-group">
               <label>Category Name</label>
-              <input 
-                type="text" 
-                value={newCategoryName} 
-                onChange={(e) => setNewCategoryName(e.target.value)} 
+              <input
+                type="text"
+                value={newCategoryName}
+                onChange={(e) => setNewCategoryName(e.target.value)}
                 placeholder="e.g. Rings, Necklaces, Bangles"
                 required
               />
             </div>
-            
+
             <div className="input-group">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
                 <label style={{ margin: 0 }}>Category Image</label>
@@ -696,18 +696,18 @@ function App() {
               </div>
 
               {newCategoryImgType === 'file' ? (
-                <input 
-                  type="file" 
+                <input
+                  type="file"
                   accept="image/*"
                   onChange={handleCategoryImgUpload}
                   disabled={newCategoryUploading}
                   style={{ background: 'rgba(255,255,255,0.01)', padding: '0.4rem', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '6px', cursor: 'pointer', width: '100%', boxSizing: 'border-box' }}
                 />
               ) : (
-                <input 
-                  type="text" 
-                  value={newCategoryImgUrl} 
-                  onChange={(e) => setNewCategoryImgUrl(e.target.value)} 
+                <input
+                  type="text"
+                  value={newCategoryImgUrl}
+                  onChange={(e) => setNewCategoryImgUrl(e.target.value)}
                   placeholder="Image URL"
                 />
               )}
@@ -736,28 +736,28 @@ function App() {
           <form onSubmit={handleUpdateMetalPrices} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <div className="input-group">
               <label>Gold Price (24K, INR/g)</label>
-              <input 
-                type="number" 
+              <input
+                type="number"
                 step="0.01"
-                value={goldPrice} 
-                onChange={(e) => setGoldPrice(e.target.value)} 
+                value={goldPrice}
+                onChange={(e) => setGoldPrice(e.target.value)}
                 placeholder="e.g. 6100.00"
                 required
               />
             </div>
-            
+
             <div className="input-group">
               <label>Silver Price (INR/g)</label>
-              <input 
-                type="number" 
+              <input
+                type="number"
                 step="0.01"
-                value={silverPrice} 
-                onChange={(e) => setSilverPrice(e.target.value)} 
+                value={silverPrice}
+                onChange={(e) => setSilverPrice(e.target.value)}
                 placeholder="e.g. 75.00"
                 required
               />
             </div>
-            
+
             <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '0.85rem' }}>
               <button type="submit" style={{ background: '#6366f1', border: 'none', borderRadius: '6px', color: '#fff', padding: '0.5rem 1rem', cursor: 'pointer', fontWeight: '600' }}>
                 Update Metal Prices
@@ -779,13 +779,10 @@ function App() {
           <form onSubmit={handleBannerSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <div className="input-group">
               <label>Select Banner Slot</label>
-              <select 
-                value={selectedBannerName} 
+              <select
+                value={selectedBannerName}
                 onChange={(e) => handleBannerSelectChange(e.target.value)}
               >
-                <option value="Hero Slide 1">Hero Slide 1 (Main Slider)</option>
-                <option value="Hero Slide 2">Hero Slide 2 (Main Slider)</option>
-                <option value="Hero Slide 3">Hero Slide 3 (Main Slider)</option>
                 <option value="Spotlight Main">Spotlight Main (Large)</option>
                 <option value="Spotlight 1">Spotlight 1 (Small Left)</option>
                 <option value="Spotlight 2">Spotlight 2 (Small Mid-Left)</option>
@@ -793,7 +790,7 @@ function App() {
                 <option value="Spotlight 4">Spotlight 4 (Small Right)</option>
               </select>
             </div>
-            
+
             <div className="input-group">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
                 <label style={{ margin: 0 }}>Banner Image</label>
@@ -832,18 +829,18 @@ function App() {
               </div>
 
               {bannerImgType === 'file' ? (
-                <input 
-                  type="file" 
+                <input
+                  type="file"
                   accept="image/*"
                   onChange={handleBannerImgUpload}
                   disabled={bannerUploading}
                   style={{ background: 'rgba(255,255,255,0.01)', padding: '0.4rem', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '6px', cursor: 'pointer', width: '100%', boxSizing: 'border-box' }}
                 />
               ) : (
-                <input 
-                  type="text" 
-                  value={bannerImgUrl} 
-                  onChange={(e) => setBannerImgUrl(e.target.value)} 
+                <input
+                  type="text"
+                  value={bannerImgUrl}
+                  onChange={(e) => setBannerImgUrl(e.target.value)}
                   placeholder="Banner Image URL"
                 />
               )}
@@ -851,14 +848,14 @@ function App() {
 
             <div className="input-group">
               <label>Target Page / Link</label>
-              <input 
-                type="text" 
-                value={bannerTargetUrl} 
-                onChange={(e) => setBannerTargetUrl(e.target.value)} 
+              <input
+                type="text"
+                value={bannerTargetUrl}
+                onChange={(e) => setBannerTargetUrl(e.target.value)}
                 placeholder="e.g. products.html?category=Rings"
               />
             </div>
-            
+
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', alignItems: 'center', marginTop: '0.5rem' }}>
               {bannerImgUrl ? (
                 <img src={bannerImgUrl} alt="Banner preview" style={{ height: '35px', width: '70px', borderRadius: '4px', objectFit: 'cover' }} />
@@ -873,28 +870,28 @@ function App() {
 
       <form onSubmit={handleSubmit}>
         <div className="form-grid">
-          
+
           <h2 className="section-title">1. Product Information</h2>
-          
+
           <div className="input-group">
             <label>Product Name</label>
-            <input 
-              type="text" 
-              name="name" 
-              value={formData.name} 
-              onChange={handleChange} 
-              placeholder="e.g. Elegant Solitaire Gold Ring" 
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="e.g. Elegant Solitaire Gold Ring"
               required
             />
           </div>
 
           <div className="input-group">
             <label>Short Description</label>
-            <input 
-              type="text" 
-              name="short_description" 
-              value={formData.short_description} 
-              onChange={handleChange} 
+            <input
+              type="text"
+              name="short_description"
+              value={formData.short_description}
+              onChange={handleChange}
               placeholder="e.g. A gorgeous gold engagement ring"
               required
             />
@@ -902,10 +899,10 @@ function App() {
 
           <div className="input-group full-width">
             <label>Full Description</label>
-            <textarea 
-              name="description" 
-              value={formData.description} 
-              onChange={handleChange} 
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
               placeholder="Enter detailed description here..."
               required
             />
@@ -933,11 +930,11 @@ function App() {
           </div>
 
           <div className="input-group" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '1.8rem' }}>
-            <input 
-              type="checkbox" 
-              name="featured" 
+            <input
+              type="checkbox"
+              name="featured"
               id="featured"
-              checked={formData.featured} 
+              checked={formData.featured}
               onChange={(e) => setFormData(prev => ({ ...prev, featured: e.target.checked }))}
               style={{ width: 'auto', height: '1.2rem', cursor: 'pointer' }}
             />
@@ -987,10 +984,10 @@ function App() {
 
             {imageSourceType === 'file' ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <input 
-                  type="file" 
+                <input
+                  type="file"
                   accept="image/*"
-                  onChange={handleFileUpload} 
+                  onChange={handleFileUpload}
                   disabled={uploadingImage}
                   style={{
                     border: '1px dashed rgba(255,255,255,0.2)',
@@ -1007,9 +1004,9 @@ function App() {
                 {formData.image_url && (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                     <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Preview:</span>
-                    <img 
-                      src={formData.image_url} 
-                      alt="Preview" 
+                    <img
+                      src={formData.image_url}
+                      alt="Preview"
                       style={{ maxWidth: '150px', maxHeight: '150px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', objectFit: 'cover' }}
                     />
                   </div>
@@ -1017,20 +1014,20 @@ function App() {
               </div>
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <input 
-                  type="text" 
-                  name="image_url" 
-                  value={formData.image_url} 
-                  onChange={handleChange} 
+                <input
+                  type="text"
+                  name="image_url"
+                  value={formData.image_url}
+                  onChange={handleChange}
                   placeholder="e.g. https://domain.com/path-to-image.jpg"
                   style={{ width: '100%' }}
                 />
                 {formData.image_url && (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                     <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Preview:</span>
-                    <img 
-                      src={formData.image_url} 
-                      alt="Preview" 
+                    <img
+                      src={formData.image_url}
+                      alt="Preview"
                       style={{ maxWidth: '150px', maxHeight: '150px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', objectFit: 'cover' }}
                     />
                   </div>
@@ -1058,23 +1055,23 @@ function App() {
 
           <div className="input-group">
             <label>Metal Weight (grams)</label>
-            <input 
-              type="number" 
-              step="0.001" 
-              name="weight" 
-              value={formData.weight} 
-              onChange={handleChange} 
+            <input
+              type="number"
+              step="0.001"
+              name="weight"
+              value={formData.weight}
+              onChange={handleChange}
               required
             />
           </div>
 
           <div className="input-group">
             <label>Stock Quantity (Inventory)</label>
-            <input 
-              type="number" 
-              name="stock" 
-              value={formData.stock} 
-              onChange={handleChange} 
+            <input
+              type="number"
+              name="stock"
+              value={formData.stock}
+              onChange={handleChange}
               required
             />
           </div>
@@ -1082,8 +1079,8 @@ function App() {
           <div className="input-group full-width">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
               <label>SKU & Barcode</label>
-              <button 
-                type="button" 
+              <button
+                type="button"
                 onClick={handleAutoGenerate}
                 style={{
                   background: 'rgba(99, 102, 241, 0.2)',
@@ -1103,19 +1100,19 @@ function App() {
               </button>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-              <input 
-                type="text" 
-                name="sku" 
-                value={formData.sku} 
-                onChange={handleChange} 
+              <input
+                type="text"
+                name="sku"
+                value={formData.sku}
+                onChange={handleChange}
                 placeholder="SKU Code"
                 required
               />
-              <input 
-                type="text" 
-                name="barcode" 
-                value={formData.barcode} 
-                onChange={handleChange} 
+              <input
+                type="text"
+                name="barcode"
+                value={formData.barcode}
+                onChange={handleChange}
                 placeholder="Barcode"
               />
             </div>
@@ -1128,8 +1125,8 @@ function App() {
             <div className="multi-select-grid">
               {OCCASIONS.map(occ => (
                 <label key={occ} className="checkbox-label">
-                  <input 
-                    type="checkbox" 
+                  <input
+                    type="checkbox"
                     checked={formData.occasions.includes(occ)}
                     onChange={() => handleCheckboxChange("occasions", occ)}
                   />
@@ -1144,8 +1141,8 @@ function App() {
             <div className="multi-select-grid">
               {TAGS.map(tag => (
                 <label key={tag} className="checkbox-label">
-                  <input 
-                    type="checkbox" 
+                  <input
+                    type="checkbox"
                     checked={formData.tags.includes(tag)}
                     onChange={() => handleCheckboxChange("tags", tag)}
                   />
@@ -1159,11 +1156,11 @@ function App() {
 
           <div className="input-group">
             <label>Metal Value (Auto Estimated)</label>
-            <input 
-              type="number" 
-              step="0.01" 
-              name="metal_value" 
-              value={estimatedMetalValue} 
+            <input
+              type="number"
+              step="0.01"
+              name="metal_value"
+              value={estimatedMetalValue}
               readOnly
               style={{ background: 'rgba(255, 255, 255, 0.05)', cursor: 'not-allowed' }}
             />
@@ -1174,34 +1171,34 @@ function App() {
 
           <div className="input-group">
             <label>Stone Value</label>
-            <input 
-              type="number" 
-              step="0.01" 
-              name="stone_value" 
-              value={formData.stone_value} 
-              onChange={handleChange} 
+            <input
+              type="number"
+              step="0.01"
+              name="stone_value"
+              value={formData.stone_value}
+              onChange={handleChange}
             />
           </div>
 
           <div className="input-group">
             <label>Making Charges</label>
-            <input 
-              type="number" 
-              step="0.01" 
-              name="making_charge" 
-              value={formData.making_charge} 
-              onChange={handleChange} 
+            <input
+              type="number"
+              step="0.01"
+              name="making_charge"
+              value={formData.making_charge}
+              onChange={handleChange}
             />
           </div>
 
           <div className="input-group">
             <label>GST Rate (%)</label>
-            <input 
-              type="number" 
-              step="0.01" 
-              name="gst" 
-              value={formData.gst} 
-              onChange={handleChange} 
+            <input
+              type="number"
+              step="0.01"
+              name="gst"
+              value={formData.gst}
+              onChange={handleChange}
               placeholder="e.g. 3.0"
             />
             <span style={{ fontSize: '0.7rem', color: '#94a3b8' }}>
@@ -1211,12 +1208,12 @@ function App() {
 
           <div className="input-group">
             <label>Discount Amount</label>
-            <input 
-              type="number" 
-              step="0.01" 
-              name="discount" 
-              value={formData.discount} 
-              onChange={handleChange} 
+            <input
+              type="number"
+              step="0.01"
+              name="discount"
+              value={formData.discount}
+              onChange={handleChange}
             />
           </div>
 
@@ -1239,9 +1236,9 @@ function App() {
             </div>
           )}
 
-          <button 
-            type="submit" 
-            className="submit-btn full-width" 
+          <button
+            type="submit"
+            className="submit-btn full-width"
             disabled={loading}
           >
             {loading ? (
