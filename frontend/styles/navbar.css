@@ -179,3 +179,12 @@ a {
     width: 10px;
     cursor: pointer;
 }
+
+#gold_rate a {
+    color: #c59d5f !important;
+    font-weight: 700;
+    transition: color 0.2s ease;
+}
+#gold_rate a:hover {
+    color: #a87e3b !important;
+}

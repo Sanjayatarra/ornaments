@@ -244,10 +244,11 @@
     }
   }
 
-  function hydrateNavbar() {
+  async function hydrateNavbar() {
     const flag = localStorage.getItem("flag_val");
     const userLink = document.getElementById("user_l");
     const cartLink = document.getElementById("cart1");
+    const goldRateContainer = document.getElementById("gold_rate");
 
     if (userLink) {
       if (flag === "true") {
@@ -270,6 +271,32 @@
     if (cartLink) {
       const cart = JSON.parse(localStorage.getItem("cart") || "[]");
       cartLink.innerText = "CART(" + cart.length + ")";
+    }
+
+    if (goldRateContainer) {
+      try {
+        const metals = await request("/metals");
+        const items = metals.results || metals || [];
+        const goldItem = items.find(m => m.name.toLowerCase() === 'gold');
+        const silverItem = items.find(m => m.name.toLowerCase() === 'silver');
+        
+        let rateText = "";
+        if (goldItem) {
+          const goldPrice = parseFloat(goldItem.price_per_gram || 0) * 1.05;
+          rateText += "GOLD: ₹" + goldPrice.toFixed(2) + "/g";
+        }
+        if (silverItem) {
+          const silverPrice = parseFloat(silverItem.price_per_gram || 0) * 1.05;
+          if (rateText) rateText += " | ";
+          rateText += "SILVER: ₹" + silverPrice.toFixed(2) + "/g";
+        }
+        
+        if (rateText) {
+          goldRateContainer.innerHTML = '<a href="products.html">' + rateText + '</a>';
+        }
+      } catch (err) {
+        console.error("Failed to load navbar metal prices:", err);
+      }
     }
   }
 
