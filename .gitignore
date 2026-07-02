@@ -34,6 +34,8 @@ venv/
 ENV/
 env/
 .env/
+media/
+
 
 # Editor / IDE
 .vscode/
@@ -43,6 +45,7 @@ env/
 *.njsproj
 *.sln
 *.sw?
+
 
 # Node dependencies (nested)
 **/node_modules/
