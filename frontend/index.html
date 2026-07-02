@@ -37,12 +37,7 @@
                     role="button">Next</button>
             </div>
             <div id="centimg">
-                <img src="https://www.tanishq.co.in/wps/wcm/connect/tanishq/d6379427-7678-436e-b7f3-970ed4df10dc/desktop/Polki_2500x950.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0RT10QIMVSTFU3006-d6379427-7678-436e-b7f3-970ed4df10dc-desktop-n-mifU0&impolicy=pqlow"
-                    alt="">
-                <img src="https://www.tanishq.co.in/wps/wcm/connect/tanishq/71fa635c-f3ab-49f1-a2f1-f78aa198806d/desktop/2500X950-copy-min.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0RT10QIMVSTFU3006-71fa635c-f3ab-49f1-a2f1-f78aa198806d-desktop-nZOB3Nn&impolicy=pqlow"
-                    alt="">
-                <img src="https://www.tanishq.co.in/wps/wcm/connect/tanishq/08781856-edc2-48d9-9088-5a02ea48e029/desktop/Tanishq_Spring_Banner_2500x950-min.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0RT10QIMVSTFU3006-08781856-edc2-48d9-9088-5a02ea48e029-desktop-n-RkeOa&impolicy=pqlow"
-                    alt="">
+                <!-- Loaded dynamically from DB -->
             </div>
         </div>
 
@@ -268,6 +263,28 @@
     }
 
     function renderDbBanners(banners) {
+        // 1. Populate top slider
+        const centimg = document.getElementById("centimg");
+        if (centimg) {
+            const slides = [
+                (banners || []).find(b => b.name === 'Hero Slide 1'),
+                (banners || []).find(b => b.name === 'Hero Slide 2'),
+                (banners || []).find(b => b.name === 'Hero Slide 3')
+            ].filter(Boolean);
+            
+            if (slides.length > 0) {
+                centimg.innerHTML = slides.map(function (slide, idx) {
+                    const displayStyle = idx === 0 ? "block" : "none";
+                    return '<img src="' + escapeHtml(slide.image || '') + '" alt="" style="display: ' + displayStyle + '; cursor: pointer; width: 100%;" onclick="window.location.href=\'' + escapeHtml(slide.target_url || 'products.html') + '\'">';
+                }).join("");
+                
+                // Re-run slider settings
+                item = 1;
+                runslider();
+            }
+        }
+
+        // 2. Populate spotlight section
         const mount = document.getElementById("dbSpotlightBanners");
         const mainMount = document.getElementById("dbSpotlightMain");
         const othersMount = document.getElementById("dbSpotlightOthers");

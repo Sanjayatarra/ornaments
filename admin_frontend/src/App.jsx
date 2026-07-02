@@ -783,6 +783,9 @@ function App() {
                 value={selectedBannerName} 
                 onChange={(e) => handleBannerSelectChange(e.target.value)}
               >
+                <option value="Hero Slide 1">Hero Slide 1 (Main Slider)</option>
+                <option value="Hero Slide 2">Hero Slide 2 (Main Slider)</option>
+                <option value="Hero Slide 3">Hero Slide 3 (Main Slider)</option>
                 <option value="Spotlight Main">Spotlight Main (Large)</option>
                 <option value="Spotlight 1">Spotlight 1 (Small Left)</option>
                 <option value="Spotlight 2">Spotlight 2 (Small Mid-Left)</option>
