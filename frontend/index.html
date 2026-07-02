@@ -314,11 +314,20 @@
   function runslider() {
     var items = document.querySelectorAll("#centimg > img");
     if (items.length === 0) return;
-    var container = document.getElementById("centimg");
-    if (container) {
-      container.style.transform = "translateX(-" + ((item - 1) * 100) + "%)";
-      for (var i = 0; i < items.length; i++) {
-        items[i].style.display = "block";
+    console.log("slider length", items.length);
+    for (var i = 0; i < items.length; i++) {
+      var slideIdx = i + 1;
+      items[i].className = "";
+      items[i].style.transform = ""; // clear transform override
+      items[i].style.display = "block"; // keep visible for CSS animation
+      
+      if (slideIdx === item) {
+        items[i].classList.add("active");
+      } else if (slideIdx === (item === 1 ? items.length : item - 1)) {
+        items[i].classList.add("exit");
+      } else {
+        // Sit on the right hand side waiting to enter
+        items[i].style.transform = "translateX(100%)";
       }
     }
   }
@@ -390,6 +399,30 @@
   }
 
   function renderDbBanners(banners) {
+    // 1. Populate top slider
+    const centimg = document.getElementById("centimg");
+    if (centimg) {
+      const slides = [
+        (banners || []).find((b) => b.name === "Hero Slide 1"),
+        (banners || []).find((b) => b.name === "Hero Slide 2"),
+        (banners || []).find((b) => b.name === "Hero Slide 3")
+      ].filter(Boolean);
+
+      if (slides.length > 0) {
+        centimg.innerHTML = slides.map(function (slide, idx) {
+          const displayStyle = "block";
+          const activeClass = idx === 0 ? "active" : "";
+          const transformStyle = idx === 0 ? "" : "transform: translateX(100%);";
+          return '<img src="' + escapeHtml(slide.image || '') + '" class="' + activeClass + '" alt="" style="display: ' + displayStyle + '; ' + transformStyle + ' cursor: pointer;" onclick="window.location.href=\'' + escapeHtml(slide.target_url || 'products.html') + '\'">';
+        }).join("");
+
+        // Reset slide index and run slider logic
+        item = 1;
+        runslider();
+      }
+    }
+
+    // 2. Populate spotlight section
     const mount = document.getElementById("dbSpotlightBanners");
     const mainMount = document.getElementById("dbSpotlightMain");
     const othersMount = document.getElementById("dbSpotlightOthers");
