@@ -362,18 +362,32 @@ function App() {
     setStatus({ type: 'info', message: 'Saving banner settings...' })
     try {
       const banner = bannersList.find(b => b.name === selectedBannerName)
-      if (!banner) {
-        throw new Error(`Banner "${selectedBannerName}" not found in database. Please run migrations and seed data.`)
+      let res = null
+
+      if (banner && banner.id) {
+        res = await fetch(`http://localhost:8000/api/storefront_banners/${banner.id}/`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            image: bannerImgUrl,
+            target_url: bannerTargetUrl
+          })
+        })
       }
 
-      const res = await fetch(`http://localhost:8000/api/storefront_banners/${banner.id}/`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          image: bannerImgUrl,
-          target_url: bannerTargetUrl
+      // If the banner was not found in the local list or the PATCH returned a 404 (due to stale database ID in memory)
+      if (!res || res.status === 404) {
+        res = await fetch(`http://localhost:8000/api/storefront_banners/`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: selectedBannerName,
+            image: bannerImgUrl,
+            target_url: bannerTargetUrl
+          })
         })
-      })
+      }
+
       if (!res.ok) {
         throw new Error('Failed to update banner')
       }
