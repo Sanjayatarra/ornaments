@@ -30,6 +30,7 @@ from myapp.views import (
     ReviewViewSet,
     BlogViewSet,
     GiftCardViewSet,
+    StorefrontBannerViewSet,
     RegisterView,
     LoginView,
     CartView,
@@ -69,6 +70,7 @@ router.register(r'custom_requests', CustomJewelryRequestViewSet)
 router.register(r'reviews', ReviewViewSet)
 router.register(r'blogs', BlogViewSet)
 router.register(r'gift_cards', GiftCardViewSet)
+router.register(r'storefront_banners', StorefrontBannerViewSet)
 
 urlpatterns = [
     path('auth/register/', RegisterView.as_view(), name='register'),

@@ -29,7 +29,8 @@ from myapp.models import (
     CustomJewelryRequest,
     Review,
     Blog,
-    GiftCard
+    GiftCard,
+    StorefrontBanner
 )
 
 from myapp.serializers import (
@@ -61,7 +62,8 @@ from myapp.serializers import (
     CustomJewelryRequestSerializer,
     ReviewSerializer,
     BlogSerializer,
-    GiftCardSerializer
+    GiftCardSerializer,
+    StorefrontBannerSerializer
 )
 
 
@@ -295,6 +297,14 @@ class GiftCardViewSet(viewsets.ModelViewSet):
     search_fields = ['code']
     filterset_fields = ['active', 'user']
     ordering_fields = ['code', 'user', 'created_at']
+
+
+class StorefrontBannerViewSet(viewsets.ModelViewSet):
+    queryset = StorefrontBanner.objects.all()
+    serializer_class = StorefrontBannerSerializer
+    search_fields = ['name']
+    filterset_fields = ['active']
+    ordering_fields = ['name', 'created_at']
 
 
 from rest_framework.views import APIView

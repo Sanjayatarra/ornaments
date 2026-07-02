@@ -510,3 +510,15 @@ class GiftCard(models.Model):
 
     class Meta:
         db_table = 'gift_cards'
+
+
+class StorefrontBanner(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=100, unique=True)
+    image = models.CharField(max_length=500, null=True, blank=True)
+    target_url = models.CharField(max_length=255, null=True, blank=True, default="products.html")
+    active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        db_table = 'storefront_banners'

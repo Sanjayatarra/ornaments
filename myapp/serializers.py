@@ -29,7 +29,8 @@ from myapp.models import (
     CustomJewelryRequest,
     Review,
     Blog,
-    GiftCard
+    GiftCard,
+    StorefrontBanner
 )
 
 
@@ -75,6 +76,12 @@ class PuritySerializer(serializers.ModelSerializer):
 class GenderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Gender
+        fields = '__all__'
+
+
+class StorefrontBannerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StorefrontBanner
         fields = '__all__'
 
 

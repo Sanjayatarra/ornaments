@@ -91,34 +91,9 @@
             <p id="dbGendersStatus" style="text-align:center; font-size:14px; color:#666;"></p>
         </div>
 
-        <div class="afterGenderBox">
-            <div class="genone">
-                <img class="img-responsive"
-                    src="https://staticimg.titan.co.in/Tanishq/Banners/home/CategorySpotlight/Artboard5.png"
-                    style="width:100%;margin-bottom: 5px;">
-            </div>
-            <div class="fourBox">
-                <div>
-                    <img class="img-responsive"
-                        src="https://staticimg.titan.co.in/Tanishq/Banners/home/CategorySpotlight/Artboard1.png"
-                        style="width:100%;">
-                </div>
-                <div>
-                    <img class="img-responsive"
-                        src="https://staticimg.titan.co.in/Tanishq/Banners/home/CategorySpotlight/Artboard2.png"
-                        style="width:100%;">
-                </div>
-                <div>
-                    <img class="img-responsive"
-                        src="https://staticimg.titan.co.in/Tanishq/Banners/home/CategorySpotlight/Artboard3.png"
-                        style="width:100%;">
-                </div>
-                <div>
-                    <img class="img-responsive"
-                        src="https://staticimg.titan.co.in/Tanishq/Banners/home/CategorySpotlight/Artboard4.png"
-                        style="width:100%;">
-                </div>
-            </div>
+        <div class="afterGenderBox" id="dbSpotlightBanners" style="display: none;">
+            <div class="genone" id="dbSpotlightMain"></div>
+            <div class="fourBox" id="dbSpotlightOthers"></div>
         </div>        <div>
             <h1 class="text-center h1">Top Sellers</h1>
             <div id="dbTopSellers" class="caraousel-contain"></div>
@@ -292,6 +267,38 @@
         }).join("");
     }
 
+    function renderDbBanners(banners) {
+        const mount = document.getElementById("dbSpotlightBanners");
+        const mainMount = document.getElementById("dbSpotlightMain");
+        const othersMount = document.getElementById("dbSpotlightOthers");
+        if (!mount || !mainMount || !othersMount) return;
+
+        const mainBanner = (banners || []).find(b => b.name === 'Spotlight Main');
+        const otherBanners = [
+            (banners || []).find(b => b.name === 'Spotlight 1'),
+            (banners || []).find(b => b.name === 'Spotlight 2'),
+            (banners || []).find(b => b.name === 'Spotlight 3'),
+            (banners || []).find(b => b.name === 'Spotlight 4')
+        ].filter(Boolean);
+
+        if (mainBanner && mainBanner.image) {
+            mainMount.innerHTML = '<img class="img-responsive" src="' + escapeHtml(mainBanner.image) + '" style="width:100%;margin-bottom: 5px; cursor: pointer;" onclick="window.location.href=\'' + escapeHtml(mainBanner.target_url || 'products.html') + '\'">';
+        } else {
+            mainMount.innerHTML = '';
+        }
+
+        othersMount.innerHTML = otherBanners.map(function (b) {
+            if (!b.image) return '';
+            return '<div onclick="window.location.href=\'' + escapeHtml(b.target_url || 'products.html') + '\'" style="cursor: pointer;">'
+                + '<img class="img-responsive" src="' + escapeHtml(b.image) + '" style="width:100%;">'
+                + '</div>';
+        }).join("");
+
+        if ((mainBanner && mainBanner.image) || otherBanners.length > 0) {
+            mount.style.display = "block";
+        }
+    }
+
     function renderDbTopSellers(products) {
         const mount = document.getElementById("dbTopSellers");
         if (!mount) return;
@@ -360,6 +367,15 @@
             }
         } catch (e) {
             if (categoryStatus) categoryStatus.textContent = "Failed to load categories.";
+        }
+
+        // 1.5. Fetch Storefront Banners
+        try {
+            const banners = await window.BackendApi.request("/storefront_banners");
+            const activeBanners = (banners || []).filter(b => b.active !== false);
+            renderDbBanners(activeBanners);
+        } catch (e) {
+            console.error("Failed to load storefront banners:", e);
         }
 
         // 2. Fetch Genders

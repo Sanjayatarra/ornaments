@@ -80,12 +80,19 @@ function App() {
   const [goldPrice, setGoldPrice] = useState('')
   const [silverPrice, setSilverPrice] = useState('')
 
+  const [bannersList, setBannersList] = useState([])
+  const [selectedBannerName, setSelectedBannerName] = useState('Spotlight Main')
+  const [bannerImgUrl, setBannerImgUrl] = useState('')
+  const [bannerTargetUrl, setBannerTargetUrl] = useState('products.html')
+  const [bannerImgType, setBannerImgType] = useState('file') // 'file' or 'url'
+  const [bannerUploading, setBannerUploading] = useState(false)
+
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState({ type: '', message: '' })
   const [imageSourceType, setImageSourceType] = useState('file') // 'file' or 'url'
   const [uploadingImage, setUploadingImage] = useState(false)
 
-  // Fetch categories and metals from backend
+  // Fetch categories, metals, and storefront banners from backend
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -127,8 +134,26 @@ function App() {
       }
     }
 
+    const fetchBanners = async () => {
+      try {
+        const res = await fetch('http://localhost:8000/api/storefront_banners/')
+        const data = await res.json()
+        const items = data.results || data || []
+        setBannersList(items)
+        
+        const active = items.find(b => b.name === 'Spotlight Main')
+        if (active) {
+          setBannerImgUrl(active.image || '')
+          setBannerTargetUrl(active.target_url || 'products.html')
+        }
+      } catch (err) {
+        console.error("Error fetching banners:", err)
+      }
+    }
+
     fetchCategories()
     fetchMetals()
+    fetchBanners()
   }, [])
 
   // Real-time calculated pricing previews
@@ -315,6 +340,82 @@ function App() {
       setStatus({ type: 'error', message: 'Category image upload failed.' })
     } finally {
       setNewCategoryUploading(false)
+    }
+  }
+
+  // Handle banner select dropdown change
+  const handleBannerSelectChange = (name) => {
+    setSelectedBannerName(name)
+    const banner = bannersList.find(b => b.name === name)
+    if (banner) {
+      setBannerImgUrl(banner.image || '')
+      setBannerTargetUrl(banner.target_url || 'products.html')
+    } else {
+      setBannerImgUrl('')
+      setBannerTargetUrl('products.html')
+    }
+  }
+
+  // Handle banner updates
+  const handleBannerSubmit = async (e) => {
+    e.preventDefault()
+    setStatus({ type: 'info', message: 'Saving banner settings...' })
+    try {
+      const banner = bannersList.find(b => b.name === selectedBannerName)
+      if (!banner) {
+        throw new Error(`Banner "${selectedBannerName}" not found in database. Please run migrations and seed data.`)
+      }
+      
+      const res = await fetch(`http://localhost:8000/api/storefront_banners/${banner.id}/`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          image: bannerImgUrl,
+          target_url: bannerTargetUrl
+        })
+      })
+      if (!res.ok) {
+        throw new Error('Failed to update banner')
+      }
+      setStatus({ type: 'success', message: `Storefront Banner "${selectedBannerName}" updated successfully!` })
+      
+      // Refresh banners
+      const refreshRes = await fetch('http://localhost:8000/api/storefront_banners/')
+      const data = await refreshRes.json()
+      setBannersList(data.results || data || [])
+    } catch (err) {
+      console.error(err)
+      setStatus({ type: 'error', message: err.message || 'Failed to save banner settings.' })
+    }
+  }
+
+  // Handle banner file upload
+  const handleBannerImgUpload = async (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+
+    setBannerUploading(true)
+    setStatus({ type: 'info', message: 'Uploading banner image...' })
+
+    const uploadData = new FormData()
+    uploadData.append('file', file)
+
+    try {
+      const res = await fetch('http://localhost:8000/api/upload/', {
+        method: 'POST',
+        body: uploadData
+      })
+      if (!res.ok) {
+        throw new Error('Failed to upload image')
+      }
+      const data = await res.json()
+      setBannerImgUrl(data.image_url)
+      setStatus({ type: 'success', message: 'Banner image uploaded successfully!' })
+    } catch (err) {
+      console.error(err)
+      setStatus({ type: 'error', message: 'Banner image upload failed.' })
+    } finally {
+      setBannerUploading(false)
     }
   }
 
@@ -660,6 +761,107 @@ function App() {
             <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '0.85rem' }}>
               <button type="submit" style={{ background: '#6366f1', border: 'none', borderRadius: '6px', color: '#fff', padding: '0.5rem 1rem', cursor: 'pointer', fontWeight: '600' }}>
                 Update Metal Prices
+              </button>
+            </div>
+          </form>
+        </div>
+
+        {/* Storefront Banners Form */}
+        <div style={{
+          background: 'rgba(255, 255, 255, 0.03)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          borderRadius: '12px',
+          padding: '1.5rem'
+        }}>
+          <h2 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#c7d2fe', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem' }}>
+            Manage Storefront Banners
+          </h2>
+          <form onSubmit={handleBannerSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div className="input-group">
+              <label>Select Banner Slot</label>
+              <select 
+                value={selectedBannerName} 
+                onChange={(e) => handleBannerSelectChange(e.target.value)}
+              >
+                <option value="Spotlight Main">Spotlight Main (Large)</option>
+                <option value="Spotlight 1">Spotlight 1 (Small Left)</option>
+                <option value="Spotlight 2">Spotlight 2 (Small Mid-Left)</option>
+                <option value="Spotlight 3">Spotlight 3 (Small Mid-Right)</option>
+                <option value="Spotlight 4">Spotlight 4 (Small Right)</option>
+              </select>
+            </div>
+            
+            <div className="input-group">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                <label style={{ margin: 0 }}>Banner Image</label>
+                <div style={{ display: 'flex', gap: '0.25rem' }}>
+                  <button
+                    type="button"
+                    onClick={() => setBannerImgType('file')}
+                    style={{
+                      background: bannerImgType === 'file' ? '#6366f1' : 'transparent',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      borderRadius: '4px',
+                      padding: '0.1rem 0.4rem',
+                      color: '#fff',
+                      fontSize: '0.7rem',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    File
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setBannerImgType('url')}
+                    style={{
+                      background: bannerImgType === 'url' ? '#6366f1' : 'transparent',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      borderRadius: '4px',
+                      padding: '0.1rem 0.4rem',
+                      color: '#fff',
+                      fontSize: '0.7rem',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    URL
+                  </button>
+                </div>
+              </div>
+
+              {bannerImgType === 'file' ? (
+                <input 
+                  type="file" 
+                  accept="image/*"
+                  onChange={handleBannerImgUpload}
+                  disabled={bannerUploading}
+                  style={{ background: 'rgba(255,255,255,0.01)', padding: '0.4rem', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '6px', cursor: 'pointer', width: '100%', boxSizing: 'border-box' }}
+                />
+              ) : (
+                <input 
+                  type="text" 
+                  value={bannerImgUrl} 
+                  onChange={(e) => setBannerImgUrl(e.target.value)} 
+                  placeholder="Banner Image URL"
+                />
+              )}
+            </div>
+
+            <div className="input-group">
+              <label>Target Page / Link</label>
+              <input 
+                type="text" 
+                value={bannerTargetUrl} 
+                onChange={(e) => setBannerTargetUrl(e.target.value)} 
+                placeholder="e.g. products.html?category=Rings"
+              />
+            </div>
+            
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', alignItems: 'center', marginTop: '0.5rem' }}>
+              {bannerImgUrl ? (
+                <img src={bannerImgUrl} alt="Banner preview" style={{ height: '35px', width: '70px', borderRadius: '4px', objectFit: 'cover' }} />
+              ) : <div />}
+              <button type="submit" disabled={bannerUploading} style={{ background: '#6366f1', border: 'none', borderRadius: '6px', color: '#fff', padding: '0.5rem 1rem', cursor: 'pointer', fontWeight: '600' }}>
+                Save Settings
               </button>
             </div>
           </form>
