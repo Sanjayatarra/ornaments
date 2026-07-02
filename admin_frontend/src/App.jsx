@@ -177,20 +177,35 @@ function App() {
     e.preventDefault()
     if (!newCategoryName.trim()) return
 
+    const nameClean = newCategoryName.trim()
+    const nameLower = nameClean.toLowerCase()
+    const duplicate = categoriesList.find(c => String(c.name || '').toLowerCase() === nameLower)
+    if (duplicate) {
+      setStatus({ type: 'error', message: `Category "${nameClean}" already exists!` })
+      return
+    }
+
     try {
-      const slug = slugify(newCategoryName)
+      const slug = slugify(nameClean)
       const res = await fetch('http://localhost:8000/api/categories/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: newCategoryName,
+          name: nameClean,
           slug: slug,
           image: newCategoryImgUrl,
           active: true
         })
       })
       if (!res.ok) {
-        throw new Error('Failed to create category')
+        const errData = await res.json().catch(() => ({}))
+        let errMsg = 'Failed to create category.'
+        if (errData && typeof errData === 'object') {
+          errMsg = Object.entries(errData)
+            .map(([field, msgs]) => `${field}: ${Array.isArray(msgs) ? msgs.join(', ') : msgs}`)
+            .join(' | ') || errMsg
+        }
+        throw new Error(errMsg)
       }
       const newCat = await res.json()
       setCategoriesList(prev => [...prev, newCat])
@@ -203,7 +218,7 @@ function App() {
       setStatus({ type: 'success', message: `Category "${newCat.name}" created successfully!` })
     } catch (err) {
       console.error(err)
-      setStatus({ type: 'error', message: 'Failed to create category.' })
+      setStatus({ type: 'error', message: err.message || 'Failed to create category.' })
     }
   }
 
