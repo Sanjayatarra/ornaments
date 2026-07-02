@@ -76,12 +76,16 @@ function App() {
   const [newCategoryImgUrl, setNewCategoryImgUrl] = useState('')
   const [newCategoryUploading, setNewCategoryUploading] = useState(false)
 
+  const [metalsList, setMetalsList] = useState([])
+  const [goldPrice, setGoldPrice] = useState('')
+  const [silverPrice, setSilverPrice] = useState('')
+
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState({ type: '', message: '' })
   const [imageSourceType, setImageSourceType] = useState('file') // 'file' or 'url'
   const [uploadingImage, setUploadingImage] = useState(false)
 
-  // Fetch categories from backend
+  // Fetch categories and metals from backend
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -106,15 +110,43 @@ function App() {
         }))
       }
     }
+
+    const fetchMetals = async () => {
+      try {
+        const res = await fetch('http://localhost:8000/api/metals/')
+        const data = await res.json()
+        const items = data.results || data
+        setMetalsList(items)
+        
+        const goldItem = items.find(m => m.name.toLowerCase() === 'gold')
+        const silverItem = items.find(m => m.name.toLowerCase() === 'silver')
+        if (goldItem) setGoldPrice(goldItem.price_per_gram)
+        if (silverItem) setSilverPrice(silverItem.price_per_gram)
+      } catch (err) {
+        console.error("Error fetching metals:", err)
+      }
+    }
+
     fetchCategories()
+    fetchMetals()
   }, [])
 
-  // Recalculate selling price
+  // Real-time calculated pricing previews
+  const currentMetalPrice = formData.metal.toLowerCase() === 'gold' ? parseFloat(goldPrice || 0) : parseFloat(silverPrice || 0)
+  const purityPct = formData.purity === '24K' || formData.purity === '999' ? 99.9 
+                  : (formData.purity === '22K' ? 91.6 
+                  : (formData.purity === '18K' ? 75.0 
+                  : (formData.purity === '14K' ? 58.3 
+                  : (formData.purity === '925' ? 92.5 : 100.0))))
+  
+  const estimatedMetalValue = (parseFloat(formData.weight || 0) * currentMetalPrice * (purityPct / 100)).toFixed(2)
+  const estimatedSubtotal = parseFloat(estimatedMetalValue) + parseFloat(formData.stone_value || 0) + parseFloat(formData.making_charge || 0)
+  const gstRate = parseFloat(formData.gst || 0)
+  const estimatedGstAmount = (estimatedSubtotal * gstRate / 100).toFixed(2)
+  
   const sellingPrice = (
-    parseFloat(formData.metal_value || 0) + 
-    parseFloat(formData.stone_value || 0) + 
-    parseFloat(formData.making_charge || 0) + 
-    parseFloat(formData.gst || 0) - 
+    estimatedSubtotal + 
+    parseFloat(estimatedGstAmount) - 
     parseFloat(formData.discount || 0)
   ).toFixed(2)
 
@@ -169,6 +201,41 @@ function App() {
       setStatus({ type: 'error', message: 'Image upload failed. Please try again.' })
     } finally {
       setUploadingImage(false)
+    }
+  }
+
+  // Handle metal price updates
+  const handleUpdateMetalPrices = async (e) => {
+    e.preventDefault()
+    setStatus({ type: 'info', message: 'Updating metal prices...' })
+    try {
+      const goldItem = metalsList.find(m => m.name.toLowerCase() === 'gold')
+      const silverItem = metalsList.find(m => m.name.toLowerCase() === 'silver')
+      
+      if (goldItem) {
+        await fetch(`http://localhost:8000/api/metals/${goldItem.id}/`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ price_per_gram: parseFloat(goldPrice || 0) })
+        })
+      }
+      if (silverItem) {
+        await fetch(`http://localhost:8000/api/metals/${silverItem.id}/`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ price_per_gram: parseFloat(silverPrice || 0) })
+        })
+      }
+      setStatus({ type: 'success', message: 'Metal prices updated successfully! All product prices recalculated.' })
+      
+      // Refresh metals from backend
+      const res = await fetch('http://localhost:8000/api/metals/')
+      const data = await res.json()
+      const items = data.results || data
+      setMetalsList(items)
+    } catch (err) {
+      console.error(err)
+      setStatus({ type: 'error', message: 'Failed to update metal prices.' })
     }
   }
 
@@ -396,7 +463,7 @@ function App() {
           weight: parseFloat(formData.weight || 0),
           barcode: barcodeVal,
           status: "Active",
-          metal_value: parseFloat(formData.metal_value || 0).toFixed(2),
+          metal_value: parseFloat(estimatedMetalValue || 0).toFixed(2),
           stone_value: parseFloat(formData.stone_value || 0).toFixed(2),
           making_charge: parseFloat(formData.making_charge || 0).toFixed(2),
           gst: parseFloat(formData.gst || 0).toFixed(2),
@@ -466,92 +533,137 @@ function App() {
         <p className="subtitle">Enter new jewelry products, variants, pricing, and stock into the ERP</p>
       </header>
 
-      {/* Category Upload Form */}
-      <div style={{
-        background: 'rgba(255, 255, 255, 0.03)',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
-        borderRadius: '12px',
-        padding: '1.5rem',
-        marginBottom: '2rem'
-      }}>
-        <h2 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#c7d2fe', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem' }}>
-          Add New Category
-        </h2>
-        <form onSubmit={handleCategorySubmit} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-          <div className="input-group">
-            <label>Category Name</label>
-            <input 
-              type="text" 
-              value={newCategoryName} 
-              onChange={(e) => setNewCategoryName(e.target.value)} 
-              placeholder="e.g. Rings, Necklaces, Bangles"
-              required
-            />
-          </div>
-          
-          <div className="input-group">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-              <label style={{ margin: 0 }}>Category Image</label>
-              <div style={{ display: 'flex', gap: '0.25rem' }}>
-                <button
-                  type="button"
-                  onClick={() => setNewCategoryImgType('file')}
-                  style={{
-                    background: newCategoryImgType === 'file' ? '#6366f1' : 'transparent',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    borderRadius: '4px',
-                    padding: '0.1rem 0.4rem',
-                    color: '#fff',
-                    fontSize: '0.7rem',
-                    cursor: 'pointer'
-                  }}
-                >
-                  File
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setNewCategoryImgType('url')}
-                  style={{
-                    background: newCategoryImgType === 'url' ? '#6366f1' : 'transparent',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    borderRadius: '4px',
-                    padding: '0.1rem 0.4rem',
-                    color: '#fff',
-                    fontSize: '0.7rem',
-                    cursor: 'pointer'
-                  }}
-                >
-                  URL
-                </button>
-              </div>
-            </div>
-
-            {newCategoryImgType === 'file' ? (
-              <input 
-                type="file" 
-                accept="image/*"
-                onChange={handleCategoryImgUpload}
-                disabled={newCategoryUploading}
-                style={{ background: 'rgba(255,255,255,0.01)', padding: '0.4rem', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '6px', cursor: 'pointer' }}
-              />
-            ) : (
+      {/* Settings Grid for Categories and Metal Prices */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
+        {/* Category Upload Form */}
+        <div style={{
+          background: 'rgba(255, 255, 255, 0.03)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          borderRadius: '12px',
+          padding: '1.5rem'
+        }}>
+          <h2 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#c7d2fe', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem' }}>
+            Add New Category
+          </h2>
+          <form onSubmit={handleCategorySubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div className="input-group">
+              <label>Category Name</label>
               <input 
                 type="text" 
-                value={newCategoryImgUrl} 
-                onChange={(e) => setNewCategoryImgUrl(e.target.value)} 
-                placeholder="Image URL"
+                value={newCategoryName} 
+                onChange={(e) => setNewCategoryName(e.target.value)} 
+                placeholder="e.g. Rings, Necklaces, Bangles"
+                required
               />
-            )}
-          </div>
-          <div style={{ gridColumn: 'span 2', display: 'flex', justifyContent: 'flex-end', gap: '1rem', alignItems: 'center' }}>
-            {newCategoryImgUrl && (
-              <img src={newCategoryImgUrl} alt="Category preview" style={{ height: '35px', width: '35px', borderRadius: '4px', objectFit: 'cover' }} />
-            )}
-            <button type="submit" disabled={newCategoryUploading} style={{ background: '#10b981', border: 'none', borderRadius: '6px', color: '#fff', padding: '0.5rem 1rem', cursor: 'pointer', fontWeight: '600' }}>
-              Create Category
-            </button>
-          </div>
-        </form>
+            </div>
+            
+            <div className="input-group">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                <label style={{ margin: 0 }}>Category Image</label>
+                <div style={{ display: 'flex', gap: '0.25rem' }}>
+                  <button
+                    type="button"
+                    onClick={() => setNewCategoryImgType('file')}
+                    style={{
+                      background: newCategoryImgType === 'file' ? '#6366f1' : 'transparent',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      borderRadius: '4px',
+                      padding: '0.1rem 0.4rem',
+                      color: '#fff',
+                      fontSize: '0.7rem',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    File
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setNewCategoryImgType('url')}
+                    style={{
+                      background: newCategoryImgType === 'url' ? '#6366f1' : 'transparent',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      borderRadius: '4px',
+                      padding: '0.1rem 0.4rem',
+                      color: '#fff',
+                      fontSize: '0.7rem',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    URL
+                  </button>
+                </div>
+              </div>
+
+              {newCategoryImgType === 'file' ? (
+                <input 
+                  type="file" 
+                  accept="image/*"
+                  onChange={handleCategoryImgUpload}
+                  disabled={newCategoryUploading}
+                  style={{ background: 'rgba(255,255,255,0.01)', padding: '0.4rem', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '6px', cursor: 'pointer', width: '100%', boxSizing: 'border-box' }}
+                />
+              ) : (
+                <input 
+                  type="text" 
+                  value={newCategoryImgUrl} 
+                  onChange={(e) => setNewCategoryImgUrl(e.target.value)} 
+                  placeholder="Image URL"
+                />
+              )}
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', alignItems: 'center', marginTop: '0.5rem' }}>
+              {newCategoryImgUrl ? (
+                <img src={newCategoryImgUrl} alt="Category preview" style={{ height: '35px', width: '35px', borderRadius: '4px', objectFit: 'cover' }} />
+              ) : <div />}
+              <button type="submit" disabled={newCategoryUploading} style={{ background: '#10b981', border: 'none', borderRadius: '6px', color: '#fff', padding: '0.5rem 1rem', cursor: 'pointer', fontWeight: '600' }}>
+                Create Category
+              </button>
+            </div>
+          </form>
+        </div>
+
+        {/* Metal Prices Form */}
+        <div style={{
+          background: 'rgba(255, 255, 255, 0.03)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          borderRadius: '12px',
+          padding: '1.5rem'
+        }}>
+          <h2 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#c7d2fe', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem' }}>
+            Update Metal Prices (per gram)
+          </h2>
+          <form onSubmit={handleUpdateMetalPrices} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div className="input-group">
+              <label>Gold Price (24K, INR/g)</label>
+              <input 
+                type="number" 
+                step="0.01"
+                value={goldPrice} 
+                onChange={(e) => setGoldPrice(e.target.value)} 
+                placeholder="e.g. 6100.00"
+                required
+              />
+            </div>
+            
+            <div className="input-group">
+              <label>Silver Price (INR/g)</label>
+              <input 
+                type="number" 
+                step="0.01"
+                value={silverPrice} 
+                onChange={(e) => setSilverPrice(e.target.value)} 
+                placeholder="e.g. 75.00"
+                required
+              />
+            </div>
+            
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '0.85rem' }}>
+              <button type="submit" style={{ background: '#6366f1', border: 'none', borderRadius: '6px', color: '#fff', padding: '0.5rem 1rem', cursor: 'pointer', fontWeight: '600' }}>
+                Update Metal Prices
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -841,14 +953,18 @@ function App() {
           <h2 className="section-title">4. Pricing Structure</h2>
 
           <div className="input-group">
-            <label>Metal Value</label>
+            <label>Metal Value (Auto Estimated)</label>
             <input 
               type="number" 
               step="0.01" 
               name="metal_value" 
-              value={formData.metal_value} 
-              onChange={handleChange} 
+              value={estimatedMetalValue} 
+              readOnly
+              style={{ background: 'rgba(255, 255, 255, 0.05)', cursor: 'not-allowed' }}
             />
+            <span style={{ fontSize: '0.7rem', color: '#94a3b8' }}>
+              weight ({formData.weight}g) * rate (₹{currentMetalPrice}/g) * purity ({purityPct}%)
+            </span>
           </div>
 
           <div className="input-group">
@@ -874,14 +990,18 @@ function App() {
           </div>
 
           <div className="input-group">
-            <label>GST</label>
+            <label>GST Rate (%)</label>
             <input 
               type="number" 
               step="0.01" 
               name="gst" 
               value={formData.gst} 
               onChange={handleChange} 
+              placeholder="e.g. 3.0"
             />
+            <span style={{ fontSize: '0.7rem', color: '#94a3b8' }}>
+              Est. GST Amount: ₹{estimatedGstAmount}
+            </span>
           </div>
 
           <div className="input-group">
@@ -902,7 +1022,7 @@ function App() {
                 (Metal + Stone + Making + GST - Discount)
               </p>
             </div>
-            <div className="pricing-value">${sellingPrice}</div>
+            <div className="pricing-value">₹{sellingPrice}</div>
           </div>
 
           {status.message && (

@@ -71,8 +71,26 @@ class Category(models.Model):
 class Metal(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255, unique=True, db_index=True)
+    price_per_gram = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     active = models.BooleanField(default=True)
     created_at = models.DateTimeField(default=timezone.now)
+
+    def save(self, *args, **kwargs):
+        is_new = self._state.adding
+        old_price = None
+        if not is_new:
+            try:
+                old_price = Metal.objects.get(pk=self.pk).price_per_gram
+            except Metal.DoesNotExist:
+                pass
+        
+        super().save(*args, **kwargs)
+        
+        # If price changed, update all associated product variants
+        if old_price is not None and old_price != self.price_per_gram:
+            variants = self.variants.all().select_related('purity', 'metal')
+            for variant in variants:
+                variant.recalculate_prices(commit=True)
 
     class Meta:
         db_table = 'metals'
@@ -200,6 +218,39 @@ class ProductVariant(models.Model):
     
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
+
+    def recalculate_prices(self, commit=False):
+        from decimal import Decimal
+        purity_pct = Decimal(str(self.purity.purity_percent)) if (self.purity and self.purity.purity_percent is not None) else Decimal('100.0')
+        metal_price = Decimal(str(self.metal.price_per_gram)) if (self.metal and hasattr(self.metal, 'price_per_gram')) else Decimal('0.00')
+        
+        weight = Decimal(str(self.weight or 0.0))
+        stone_val = Decimal(str(self.stone_value or 0.0))
+        making = Decimal(str(self.making_charge or 0.0))
+        gst_rate = Decimal(str(self.gst or 0.0))
+        disc = Decimal(str(self.discount or 0.0))
+        
+        # metal_value = weight * metal_price * (purity_pct / 100)
+        self.metal_value = (weight * metal_price * purity_pct / Decimal('100.0')).quantize(Decimal('0.01'))
+        
+        # subtotal
+        subtotal = self.metal_value + stone_val + making
+        
+        # gst amount (percentage of subtotal)
+        gst_amount = (subtotal * gst_rate / Decimal('100.0')).quantize(Decimal('0.01'))
+        
+        # selling_price = subtotal + gst_amount - discount
+        self.selling_price = (subtotal + gst_amount - disc).quantize(Decimal('0.01'))
+        
+        if commit:
+            ProductVariant.objects.filter(pk=self.pk).update(
+                metal_value=self.metal_value,
+                selling_price=self.selling_price
+            )
+
+    def save(self, *args, **kwargs):
+        self.recalculate_prices(commit=False)
+        super().save(*args, **kwargs)
 
     class Meta:
         db_table = 'product_variants'
