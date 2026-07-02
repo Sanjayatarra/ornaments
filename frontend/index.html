@@ -399,13 +399,9 @@
     const centimg = document.getElementById("centimg");
     if (centimg) {
       // Find the 5 spotlight banners from the API response
-      const slides = [
-        (banners || []).find((b) => b.name === "Spotlight Main"),
-        (banners || []).find((b) => b.name === "Spotlight 1"),
-        (banners || []).find((b) => b.name === "Spotlight 2"),
-        (banners || []).find((b) => b.name === "Spotlight 3"),
-        (banners || []).find((b) => b.name === "Spotlight 4"),
-      ].filter(Boolean);
+      const slides = (banners || []).filter(function (b) {
+        return b.image && b.image.trim() !== "" && b.active !== false;
+      });
 
       if (slides.length > 0) {
         centimg.innerHTML = slides
