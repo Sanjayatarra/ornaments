@@ -270,15 +270,7 @@
         if (!mount) return;
 
         mount.innerHTML = categories.map(function (c) {
-            const defaultImages = {
-                "rings": "https://staticimg.titan.co.in/Tanishq/Banners/home/categoriesCircle/CategoryWhiteFingerRings240x240px.png",
-                "earrings": "https://staticimg.titan.co.in/Tanishq/Banners/home/categoriesCircle/CategoryWhiteEARRINGS240x240px.png",
-                "necklaces": "https://staticimg.titan.co.in/Tanishq/Banners/home/categoriesCircle/CategoryWhiteNecklace240x240px.png",
-                "bangles": "https://staticimg.titan.co.in/Tanishq/Banners/home/categoriesCircle/CategoryWhiteBangles240x240px.png",
-                "chains": "https://staticimg.titan.co.in/Tanishq/Banners/home/categoriesCircle/CategoryWhiteChain240x240px.png",
-                "pendants": "https://staticimg.titan.co.in/Tanishq/Banners/home/categoriesCircle/CategoryWhitePENDANTS240x240px.png"
-            };
-            const image = c.image || defaultImages[c.name.toLowerCase()] || "https://via.placeholder.com/240x240?text=" + encodeURIComponent(c.name);
+            const image = c.image || "";
             const name = c.name;
             return '<div style="flex: 0 0 calc(16.66% - 20px); min-width: 120px; text-align: center; cursor: pointer; margin-bottom: 20px;" onclick="window.location.href=\'products.html?category=' + encodeURIComponent(name) + '\'">'
                 + '<img src="' + escapeHtml(image) + '" alt="' + escapeHtml(name) + '" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 1px solid #e9e9e9; transition: transform 0.2s;" class="shadow-on-hover">'
@@ -292,12 +284,7 @@
         if (!mount) return;
 
         mount.innerHTML = genders.map(function (g) {
-            const defaultImages = {
-                "men": "https://staticimg.titan.co.in/Tanishq/Banners/home/gender/men.jpg",
-                "women": "https://staticimg.titan.co.in/Tanishq/Banners/home/gender/women.jpg",
-                "kids": "https://staticimg.titan.co.in/Tanishq/Banners/home/gender/kids.jpg"
-            };
-            const image = defaultImages[g.name.toLowerCase()] || "https://via.placeholder.com/350x450?text=" + encodeURIComponent(g.name);
+            const image = g.image || "";
             return '<div style="flex: 1; min-width: 250px; max-width: 380px; text-align: center; cursor: pointer; margin-bottom: 20px;" onclick="window.location.href=\'products.html?gender=' + encodeURIComponent(g.name) + '\'">'
                 + '<img src="' + escapeHtml(image) + '" alt="' + escapeHtml(g.name) + '" style="width: 100%; height: 350px; border-radius: 8px; object-fit: cover; border: 1px solid #e9e9e9;">'
                 + '<h3 class="text-center" style="margin:15px auto 20px; color:#000; letter-spacing:1px; font-size:14px; text-transform: uppercase; font-weight: 600;">' + escapeHtml(g.name) + '</h3>'

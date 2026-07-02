@@ -117,16 +117,10 @@
             <div><a style="color: white; text-decoration: none" href="products.html">SEE MORE PRODUCTS</a></div>
         </div>
 
-        <div>
-            <p style="font-size: 18px;">Popular Earrings</p>
+        <div id="dynamic-categories-section" style="margin-top: 30px;">
+            <p style="font-size: 18px;" id="dynamic-categories-title">Categories</p>
             <hr style="border: 1px solid gray;">
-            <p style="font-size: 18px"><a style="color: black; text-decoration: none;" href="products.html">7 Stone Earrings | Bali Earrings | Chand Bali Earrings | Chandbali Earrings | Cluster Earrings |
-                    Color Stone Earrings | Dangle Earrings | Diamond Earrings | Eternity Earrings | Fancy Earrings | Floral Earrings | Gemstone Earrings | 
-                    Geometric Earrings | Gold Earrings | Hoop Earrings | Huggies Earrings | Jali Earrings | Jhumka Earrings | Leaf Earrings | Long drop Earrings
-                    | Mia Earrings | Motif Earrings | Navratna Earrings | Paisley Earrings | Pearl Earrings | Pendant Earrings Set | Platinum Earrings
-                    | Rajkot Bali Earrings | Short Drop Earrings | Single Stone Earrings | Stud Earrings | Stud with Hanging Earrings | Sui Dhaga Earrings | 
-                    Traditional Stud Earrings | All Earrings</a>
-            </p>
+            <p style="font-size: 16px; line-height: 2; margin-top: 15px;" id="dynamic-categories-links">Loading categories...</p>
         </div>
     </div>
 
@@ -169,6 +163,46 @@
 <script>
     var data = [];
 
+    function escapeHtml(text) {
+        if (!text) return "";
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#39;");
+    }
+
+    async function loadCategoriesFromBackend() {
+        try {
+            const res = await fetch('http://localhost:8000/api/categories/');
+            const data = await res.json();
+            const items = data.results || data || [];
+            const container = document.getElementById("dynamic-categories-links");
+            const title = document.getElementById("dynamic-categories-title");
+            
+            const params = new URLSearchParams(window.location.search);
+            const activeCategory = params.get("category");
+            if (activeCategory) {
+                title.innerText = "Popular " + activeCategory;
+            } else {
+                title.innerText = "Popular Categories";
+            }
+
+            if (container) {
+                let html = items.map(function(c) {
+                    const isSelected = activeCategory && activeCategory.toLowerCase() === c.name.toLowerCase();
+                    return '<a style="color: ' + (isSelected ? '#c59d5f' : 'black') + '; text-decoration: none; margin: 0 10px; font-weight: ' + (isSelected ? '700' : '500') + '; font-size: 15px;" href="products.html?category=' + encodeURIComponent(c.name) + '">' + escapeHtml(c.name) + '</a>';
+                }).join(" | ");
+                // Add an 'All Products' link as well
+                html = '<a style="color: ' + (!activeCategory ? '#c59d5f' : 'black') + '; text-decoration: none; margin: 0 10px; font-weight: ' + (!activeCategory ? '700' : '500') + '; font-size: 15px;" href="products.html">All Jewellery</a> | ' + html;
+                container.innerHTML = html;
+            }
+        } catch (err) {
+            console.error("Failed to load categories in sidebar:", err);
+        }
+    }
+
     async function loadProductsFromBackend() {
         try {
             data = await window.BackendApi.fetchLegacyProducts();
@@ -196,6 +230,7 @@
     }
 
     loadProductsFromBackend();
+    loadCategoriesFromBackend();
 
     priceSort.addEventListener('click', () => {
         data = JSON.parse(localStorage.getItem("database")) || data;
